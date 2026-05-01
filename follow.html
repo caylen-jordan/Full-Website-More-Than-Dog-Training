@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Along | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── PLATFORM CARDS ─────────────────────────────────── */
+    .platforms-section {
+      padding: 6.5rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1120px;
+      margin: 3rem auto 0;
+    }
+
+    .platform-card {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 3rem 2.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .platform-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .platform-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lavender-dk), var(--lavender));
+    }
+
+    .platform-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 1.5rem;
+      color: var(--lavender);
+    }
+
+    .platform-name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .platform-handle {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--lavender);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+
+    .platform-desc {
+      color: var(--white-dim);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .platform-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .platform-tag {
+      background: rgba(196, 168, 232, 0.08);
+      color: var(--lavender);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      border: 1px solid rgba(196, 168, 232, 0.15);
+    }
+
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      font-family: var(--font-body);
+    }
+
+    .platform-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .platform-btn--tiktok {
+      background: var(--lavender);
+      color: var(--black);
+    }
+
+    .platform-btn--tiktok:hover {
+      background: var(--lavender-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 168, 232, 0.28);
+    }
+
+    .platform-btn--ig {
+      background: rgba(196, 168, 232, 0.1);
+      color: var(--lavender);
+      border: 1.5px solid rgba(196, 168, 232, 0.35);
+    }
+
+    .platform-btn--ig:hover {
+      background: rgba(196, 168, 232, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ─── WHAT TO EXPECT STRIP ───────────────────────────── */
+    .expect-section {
+      padding: 5rem 2rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1120px;
+      margin: 3rem auto 0;
+    }
+
+    .expect-item {
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .expect-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .expect-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.65rem;
+    }
+
+    .expect-desc {
+      font-size: 0.92rem;
+      color: var(--white-faint);
+      line-height: 1.7;
+    }
+
+    /* ─── CONTENT PREVIEW GRID ───────────────────────────── */
+    .preview-section {
+      padding: 6.5rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 1120px;
+      margin: 3rem auto 0;
+    }
+
+    .preview-item {
+      position: relative;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .preview-item:hover { border-color: var(--border-hover); }
+
+    /* ─── CTA SECTION ────────────────────────────────────── */
+    .follow-cta-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #130926 0%, #0A0618 50%, #1E1040 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .follow-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(196, 168, 232, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .follow-cta-section .container { position: relative; z-index: 1; }
+
+    .follow-cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .follow-cta-sub {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .follow-cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .platforms-grid { grid-template-columns: 1fr; }
+      .expect-grid { grid-template-columns: 1fr 1fr; }
+      .preview-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .expect-grid { grid-template-columns: 1fr; }
+      .preview-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html" class="active">Follow Along</a>
+      <a href="freebies.html">Freebies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Follow Along</span>
+      <h1 class="page-headline">Watch the Work.<br><em>Feel the Difference.</em></h1>
+      <p class="page-sub">The best way to know if Caylen is the right trainer for your dog? Watch her work before you ever reach out. Free content, real dogs, real training — posted regularly on TikTok and Instagram.</p>
+    </div>
+  </div>
+
+
+  <!-- ─── PLATFORM CARDS ───────────────────────────────────── -->
+  <section class="platforms-section">
+    <div style="max-width:1120px;margin:0 auto;">
+      <span class="eyebrow reveal">Find Caylen On</span>
+      <h2 class="section-headline reveal reveal-d1">Two Platforms.<br><em>All Free. All Real.</em></h2>
+    </div>
+
+    <div class="platforms-grid">
+
+      <!-- TikTok Card -->
+      <div class="platform-card reveal reveal-d1">
+        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+        </svg>
+        <div class="platform-name">TikTok</div>
+        <div class="platform-handle">@morethandogtraining</div>
+        <p class="platform-desc">
+          Caylen's most active platform. Expect real training sessions, before-and-after transformations, reactive dog work, off-leash obedience, and honest commentary on what it actually takes to train a dog well. No fluff, no clickbait — just the real thing.
+        </p>
+        <div class="platform-tags">
+          <span class="platform-tag">Transformations</span>
+          <span class="platform-tag">Off-Leash Training</span>
+          <span class="platform-tag">Reactive Dogs</span>
+          <span class="platform-tag">Board &amp; Train</span>
+          <span class="platform-tag">Free Tips</span>
+        </div>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer" class="platform-btn platform-btn--tiktok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          Follow on TikTok
+        </a>
+      </div>
+
+      <!-- Instagram Card -->
+      <div class="platform-card reveal reveal-d2">
+        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <div class="platform-name">Instagram</div>
+        <div class="platform-handle">@morethandogtraining_</div>
+        <p class="platform-desc">
+          Behind-the-scenes of life at More Than Dog Training. Client wins, day-in-the-life content, training reels, and a closer look at the dogs Caylen works with. A warmer, more personal look at the work and the person behind it.
+        </p>
+        <div class="platform-tags">
+          <span class="platform-tag">Behind the Scenes</span>
+          <span class="platform-tag">Client Wins</span>
+          <span class="platform-tag">Training Reels</span>
+          <span class="platform-tag">Dog Content</span>
+          <span class="platform-tag">Life in Hutto</span>
+        </div>
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer" class="platform-btn platform-btn--ig">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Follow on Instagram
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── WHAT TO EXPECT ───────────────────────────────────── -->
+  <div class="expect-section">
+    <div style="max-width:1120px;margin:0 auto;text-align:center;">
+      <span class="eyebrow reveal">What You'll See</span>
+      <h2 class="section-headline reveal reveal-d1" style="text-align:center;">Free Training Content,<br><em>Worth Watching</em></h2>
+    </div>
+    <div class="expect-grid">
+      <div class="expect-item reveal reveal-d1">
+        <span class="expect-icon" aria-hidden="true">🎬</span>
+        <div class="expect-title">Real Transformations</div>
+        <p class="expect-desc">Before-and-after videos of actual board &amp; train clients. You'll see exactly what changes and exactly how fast.</p>
+      </div>
+      <div class="expect-item reveal reveal-d2">
+        <span class="expect-icon" aria-hidden="true">🐕</span>
+        <div class="expect-title">Reactive Dog Work</div>
+        <p class="expect-desc">Caylen films real sessions with reactive dogs — the messy parts, the breakthroughs, and everything in between.</p>
+      </div>
+      <div class="expect-item reveal reveal-d3">
+        <span class="expect-icon" aria-hidden="true">🎓</span>
+        <div class="expect-title">Free Training Tips</div>
+        <p class="expect-desc">Practical, honest tips you can use right now. No selling, no upsells — just information that actually helps.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── CONTENT PREVIEW GRID ─────────────────────────────── -->
+  <section class="preview-section">
+    <div style="max-width:1120px;margin:0 auto;">
+      <span class="eyebrow reveal">A Glimpse at the Content</span>
+      <h2 class="section-headline reveal reveal-d1">See What's Happening<br><em>Behind the Scenes</em></h2>
+    </div>
+
+    <div class="preview-grid">
+      <!-- ═══════════════════════════════════════════════════
+           PHOTO PLACEHOLDER — Content Preview Grid (6 images)
+           Replace each block below with a screenshot or still from your TikTok/Instagram content.
+           Recommended: square crops (1:1) or portrait (4:5) for social media preview look.
+           Example replacement:
+           <div class="preview-item">
+             <img src="CONTENT_SCREENSHOT.jpg" alt="TikTok training video" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+           </div>
+           ═══════════════════════════════════════════════════ -->
+
+      <div class="preview-item reveal reveal-d1">
+        <img src="IMG_2591.jpg" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+      <div class="preview-item reveal reveal-d2">
+        <img src="IMG_3500.jpg" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+      <div class="preview-item reveal reveal-d3">
+        <img src="IMG_4136.jpg" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+      <div class="preview-item reveal reveal-d1">
+        <img src="IMG_4281.jpg" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+      <div class="preview-item reveal reveal-d2">
+        <img src="IMG_2364.JPG" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+      <div class="preview-item reveal reveal-d3">
+        <img src="IMG_5374.jpg" alt="Training content" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── CTA ───────────────────────────────────────────────── -->
+  <div class="follow-cta-section">
+    <div class="container">
+      <h2 class="follow-cta-headline reveal">Liked what you saw?<br>Let's talk about your dog.</h2>
+      <p class="follow-cta-sub reveal reveal-d1">Following along is just the start. When you're ready to see that kind of transformation in your own dog, the free call is how it begins.</p>
+      <div class="follow-cta-btns reveal reveal-d2">
+        <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call</a>
+        <a href="contact.html" class="btn-outline">Send an Inquiry</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  </script>
+
+</body>
+</html>

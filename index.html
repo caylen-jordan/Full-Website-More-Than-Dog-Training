@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More Than Dog Training | Hutto, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 9rem 2rem 5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('IMG_7207.jpg');
+      background-size: cover;
+      background-position: center 52%;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(9, 9, 9, 0.90) 0%,
+        rgba(26, 13, 46, 0.82) 35%,
+        rgba(42, 18, 80, 0.72) 60%,
+        rgba(9, 9, 9, 0.88) 100%
+      );
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      max-width: 1120px;
+      text-align: left;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.2s ease forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8.5vw, 7rem);
+      font-weight: 900;
+      line-height: 1.04;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.35s ease forwards;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--lavender);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--white-dim);
+      max-width: 620px;
+      margin: 0 0 2.75rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s ease forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s ease forwards;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--lavender), transparent);
+      animation: scrollPulse 2.2s ease infinite;
+    }
+
+    .scroll-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.35; }
+      50%       { opacity: 0.9; }
+    }
+
+    /* ─── HERO PORTRAIT ───────────────────────────────────── */
+    .hero-portrait-img {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 3px;
+      border: 1.5px solid rgba(196, 168, 232, 0.35);
+      display: block;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    /* ─── BOARD & TRAIN ───────────────────────────────────── */
+    #board-train {
+      background: var(--black-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #board-train::before {
+      content: '';
+      position: absolute;
+      top: -220px; right: -220px;
+      width: 650px; height: 650px;
+      background: radial-gradient(circle, rgba(107, 79, 160, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bt-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+
+    .bt-text p {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-photo {
+      width: 100%;
+      border-radius: 3px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .section-photo--landscape {
+      aspect-ratio: 16 / 7;
+      object-position: center;
+    }
+
+    /* ─── SERVICES ────────────────────────────────────────── */
+    #services {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+
+    .services-intro {
+      max-width: 560px;
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .services-photo-wrap {
+      margin-top: 3rem;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .services-photo-wrap img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    #about {
+      background: linear-gradient(180deg, var(--black-soft) 0%, #0C0818 100%);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 5.5rem;
+      align-items: start;
+    }
+
+    .about-big-num {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 11vw, 9rem);
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--lavender-dk);
+      margin-bottom: 0.25rem;
+    }
+
+    .about-num-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 3rem;
+    }
+
+    .about-right p {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.3rem;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 3px;
+      border: 1.5px solid rgba(196, 168, 232, 0.3);
+      display: block;
+    }
+
+    /* ─── SOCIAL ──────────────────────────────────────────── */
+    #social {
+      background: linear-gradient(135deg, #130926 0%, #0A0618 50%, #1E1040 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #social::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(196, 168, 232, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #social .container { position: relative; z-index: 1; }
+
+    .social-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.13;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .social-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--white-dim);
+      max-width: 580px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .social-btns {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .social-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .social-btn-ig {
+      background: rgba(196, 168, 232, 0.1);
+      color: var(--lavender);
+      border: 1px solid rgba(196, 168, 232, 0.28);
+    }
+
+    .social-btn-ig:hover { background: rgba(196, 168, 232, 0.2); transform: translateY(-2px); }
+
+    .social-btn-tt {
+      background: var(--lavender);
+      color: var(--black);
+    }
+
+    .social-btn-tt:hover {
+      background: var(--lavender-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 168, 232, 0.28);
+    }
+
+    /* ─── GALLERY STRIP ───────────────────────────────────── */
+    .gallery-strip {
+      padding: 2.25rem 0;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      cursor: grab;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 0.85rem;
+      animation: galleryScroll 40s linear infinite;
+      width: max-content;
+    }
+
+    .gallery-strip:hover .gallery-track { animation-play-state: paused; }
+
+    .gallery-img {
+      height: 260px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 3px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    @keyframes galleryScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    #contact {
+      background: var(--black-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5.5rem;
+      align-items: start;
+    }
+
+    .contact-left p {
+      color: var(--white-dim);
+      font-size: 1rem;
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-skip {
+      font-size: 0.88rem;
+      color: var(--white-faint);
+      line-height: 1.6;
+    }
+
+    .contact-skip a {
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-skip a:hover { text-decoration: underline; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+      }
+
+      .hero-ctas { justify-content: center; }
+      .hero-photo { display: none; }
+
+      .bt-inner,
+      .about-inner,
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-big-num { font-size: 6rem; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-headline { font-size: clamp(2.6rem, 12vw, 3.5rem); }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="freebies.html">Freebies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Hutto, TX &nbsp;·&nbsp; Est. 2018</span>
+
+        <h1 id="hero-heading" class="hero-headline">
+          Your Dog's<br>
+          <em>Transformation</em><br>
+          Starts Here.
+        </h1>
+
+        <p class="hero-sub">
+          Off-leash freedom. Calm on leash.<br>A dog you can take anywhere.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call</a>
+          <a href="#contact" class="btn-outline">Send an Inquiry</a>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal reveal-d2">
+        <!-- PHOTO PLACEHOLDER: Replace with your hero portrait photo -->
+        <!-- To use your existing photo: <img src="IMG_7200.jpg" alt="Dog training with Caylen" class="hero-portrait-img"> -->
+        <img src="IMG_7200.jpg" alt="Dog training with Caylen" class="hero-portrait-img">
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ─── TESTIMONIAL 1 (after hero) ───────────────────────── -->
+  <div class="testi-section testi-section--deep" aria-label="Client testimonial">
+    <div class="testi-grid testi-grid--single">
+      <div class="testi-card testi-card--featured reveal">
+        <div class="testi-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-text">"If we had not found Caylen, I am skeptical that we would have kept our dog much longer. Caylen was amazing — I mean AMAZING. She observed us, tailored everything to our family, and now I have no regrets about Daisy or concerns about how she behaves."</p>
+        <div class="testi-author">
+          <span class="testi-name">Daisy's Family</span>
+          <span class="testi-detail">Hutto, TX &nbsp;·&nbsp; Herding Breed</span>
+          <span class="testi-source">&#9733; Google Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── BOARD & TRAIN ─────────────────────────────────────── -->
+  <section id="board-train" aria-labelledby="bt-heading">
+    <div class="container">
+      <div class="bt-inner">
+
+        <div class="bt-text">
+          <span class="eyebrow reveal">Featured Program</span>
+          <h2 id="bt-heading" class="section-headline reveal reveal-d1">The Program That<br>Changes Everything</h2>
+          <p class="reveal reveal-d2">A full board &amp; train isn't just training — it's a transformation. Your dog lives with Caylen, gets full days of focused work, and comes home as the dog you always knew they could be.</p>
+          <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary reveal reveal-d4">Book Your Call</a>
+        </div>
+
+        <div class="reveal reveal-d2">
+          <div class="program-card">
+            <div class="program-badge">Board &amp; Train</div>
+            <div class="program-name">Off Leash Obedience<br>Board &amp; Train</div>
+            <div class="program-duration">4 Weeks</div>
+            <p class="program-desc">
+              Your dog spends 4 weeks living in a real home environment — not a noisy kennel — on a large park property just outside Austin. They come home with reliable off-leash obedience, solid recall, and the ability to go anywhere with you.
+            </p>
+            <div class="card-divider"></div>
+            <ul class="features" aria-label="Program highlights">
+              <li>Lives in a real home environment — not a kennel</li>
+              <li>Reliable off-leash obedience &amp; rock-solid recall</li>
+              <li>One-on-one attention from Caylen every single day</li>
+              <li>Ready for parks, trails, restaurants, public spaces</li>
+              <li>Guided transition support when they come home</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── TESTIMONIALS 2 ────────────────────────────────────── -->
+  <div class="testi-section testi-section--dark" aria-label="Client testimonials">
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-text">"Caylen is a true dog whisperer! I could see a big difference after only a few sessions. I would highly recommend Caylen to anyone that needs help training their dog."</p>
+        <div class="testi-author">
+          <span class="testi-name">Kristin</span>
+          <span class="testi-detail">Austin, TX &nbsp;·&nbsp; Golden Doodles</span>
+          <span class="testi-source">&#9733; Google Review</span>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-text">"From the first phone conversation, I could tell that Caylen understood exactly what we were going through. Blitz has come a long way and is now much calmer, more respectful, and well-behaved."</p>
+        <div class="testi-author">
+          <span class="testi-name">Joe &amp; Erin</span>
+          <span class="testi-detail">Austin, TX &nbsp;·&nbsp; Great Dane</span>
+          <span class="testi-source">&#9733; Google Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── OTHER SERVICES ────────────────────────────────────── -->
+  <section id="services" aria-labelledby="svc-heading">
+    <div class="container">
+      <span class="eyebrow reveal">Other Ways to Work Together</span>
+      <h2 id="svc-heading" class="section-headline reveal reveal-d1">Not Sure If Board &amp; Train<br>Is Right for You?</h2>
+      <p class="services-intro reveal reveal-d2">
+        We specialize in off-leash obedience and reactivity — and have structured options for dogs at every stage.
+      </p>
+
+      <div class="services-grid">
+        <div class="svc-card reveal reveal-d2">
+          <span class="svc-icon" aria-hidden="true">🏡</span>
+          <div class="svc-name">Board &amp; Train</div>
+          <p class="svc-desc">4 weeks in a home environment. Real-life training, real results. The most comprehensive transformation program available.</p>
+        </div>
+        <div class="svc-card reveal reveal-d3">
+          <span class="svc-icon" aria-hidden="true">🦮</span>
+          <div class="svc-name">Private Training</div>
+          <p class="svc-desc">In-person sessions at our location in Hutto, TX. Hands-on, focused work for dogs at any stage.</p>
+        </div>
+        <div class="svc-card reveal reveal-d4">
+          <span class="svc-icon" aria-hidden="true">💻</span>
+          <div class="svc-name">Virtual Training</div>
+          <p class="svc-desc">Not local to Hutto? Work with us online. Same expertise, same results — no matter where you are.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-left">
+          <span class="eyebrow reveal">About Caylen</span>
+          <h2 id="about-heading" class="section-headline reveal reveal-d1">10 Years.<br>Hundreds of Dogs.<br>One Passion.</h2>
+          <div class="reveal reveal-d2" aria-hidden="true">
+            <div class="about-big-num">2018</div>
+            <div class="about-num-label">Founded in Hutto, TX</div>
+          </div>
+          <!-- PHOTO PLACEHOLDER: Replace with two portrait photos of Caylen or dogs -->
+          <!-- To use your existing photos:
+               <div class="about-photos">
+                 <img src="IMG_9612.jpg" alt="Caylen working with a dog" loading="lazy">
+                 <img src="IMG_9650.jpg" alt="Training session" loading="lazy">
+               </div>
+          -->
+          <div class="about-photos reveal reveal-d3">
+            <img src="IMG_0409.JPG" alt="Caylen with a dog at the river" loading="lazy">
+            <img src="DSC09880_Original.jpg" alt="Caylen with her Belgian Malinois" loading="lazy">
+          </div>
+        </div>
+
+        <div class="about-right">
+          <p class="reveal">
+            Caylen has spent a decade working with dogs of all kinds — from brand new puppies finding their place in a home, to adult dogs who just need better manners, to reactive dogs who struggle on leash or in certain situations.
+          </p>
+          <p class="reveal reveal-d1">
+            Every dog that comes through More Than Dog Training gets a customized plan — and every owner gets a trainer who is fully invested in their success.
+          </p>
+          <blockquote class="pull-quote reveal reveal-d3">
+            "Don't give up on them.<br>Let's work on it together."
+          </blockquote>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── SOCIAL ────────────────────────────────────────────── -->
+  <section id="social" aria-labelledby="social-heading">
+    <!-- PHOTO PLACEHOLDER: Replace with background lifestyle photo -->
+    <!-- To use your existing photo: <img src="IMG_1207_jpg.jpg" alt="" class="social-bg-img" aria-hidden="true" loading="lazy"> -->
+    <img src="IMG_1207_jpg.jpg" alt="" class="social-bg-img" aria-hidden="true" loading="lazy">
+    <div class="container">
+      <span class="eyebrow reveal" style="display:block;text-align:center;">Follow Along</span>
+      <h2 id="social-heading" class="section-headline reveal reveal-d1" style="text-align:center;">Get to Know<br>Your Trainer</h2>
+      <p class="social-sub reveal reveal-d2">
+        The best way to know if we are a good fit? Watch Caylen work. Follow along on TikTok and Instagram for real training content, transformations, and a behind-the-scenes look at life at More Than Dog Training.
+      </p>
+      <div class="social-btns reveal reveal-d3">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-ig" aria-label="Follow on Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @morethandogtraining_
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-tt" aria-label="Follow on TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          @morethandogtraining
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── TESTIMONIAL 3 ─────────────────────────────────────── -->
+  <div class="testi-section testi-section--dark" aria-label="Client testimonial">
+    <div class="testi-grid testi-grid--single">
+      <div class="testi-card testi-card--featured reveal">
+        <div class="testi-mark" aria-hidden="true">&ldquo;</div>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-text">"Caylen taught me that we both deserved better. Now, our daily walks are relaxed and I am no longer fearful of her lunging at strangers or barking at other dogs. Caylen gave me back hope."</p>
+        <div class="testi-author">
+          <span class="testi-name">Angie</span>
+          <span class="testi-detail">Austin, TX &nbsp;·&nbsp; German Shepherd</span>
+          <span class="testi-source">&#9733; Google Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── GALLERY STRIP ─────────────────────────────────────── -->
+  <!-- PHOTO PLACEHOLDER: Replace filenames below with your actual gallery photos. Duplicate each entry once for the seamless scroll loop. -->
+  <div class="gallery-strip" aria-label="Photo gallery" role="region">
+    <div class="gallery-track">
+      <!-- First set of gallery photos -->
+      <img src="IMG_2673.jpg"     class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_1259_jpg.jpg" class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_2203.JPG"     class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_5412.JPG"     class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_5431.JPG"     class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_5966.JPG"     class="gallery-img" alt="Dog training" loading="lazy">
+      <img src="IMG_7368.JPG"     class="gallery-img" alt="Dog training" loading="lazy">
+      <!-- Duplicate set for seamless loop -->
+      <img src="IMG_2673.jpg"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_1259_jpg.jpg" class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_2203.JPG"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_5412.JPG"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_5431.JPG"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_5966.JPG"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+      <img src="IMG_7368.JPG"     class="gallery-img" alt="" aria-hidden="true" loading="lazy">
+    </div>
+  </div>
+
+
+  <!-- ─── CONTACT ───────────────────────────────────────────── -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-left">
+          <span class="eyebrow reveal">Get in Touch</span>
+          <h2 id="contact-heading" class="section-headline reveal reveal-d1">Ready to Get Started?</h2>
+          <p class="reveal reveal-d2">Tell us about you and your dog. Every inquiry is personally reviewed and you'll hear back within 1–2 business days.</p>
+          <p class="contact-skip reveal reveal-d3">
+            Prefer to skip the form?<br>
+            <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer">Book your call directly →</a>
+          </p>
+        </div>
+
+        <form id="inquiry-form" novalidate aria-label="Inquiry form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">Your Name</label>
+              <input type="text" id="f-name" name="name" placeholder="Jane Smith" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email Address</label>
+              <input type="email" id="f-email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-phone">Phone Number</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(512) 555-0123" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="f-dog-name">Dog's Name</label>
+              <input type="text" id="f-dog-name" name="dog_name" placeholder="Biscuit">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-dog-age">Dog's Age</label>
+            <input type="text" id="f-dog-age" name="dog_age" placeholder="e.g. 2 years, 8 months">
+          </div>
+
+          <div class="form-group">
+            <label for="f-struggle">What are you struggling with?</label>
+            <textarea id="f-struggle" name="struggle" placeholder="Tell us what's going on. The more detail, the better." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="f-referral">How did you hear about us?</label>
+            <select id="f-referral" name="referral">
+              <option value="" disabled selected>Select one…</option>
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">TikTok</option>
+              <option value="google">Google Search</option>
+              <option value="referral">Friend / Referral</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit">Send My Inquiry</button>
+
+          <div class="form-success" id="form-success" role="alert" aria-live="polite">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Your inquiry has been sent! Caylen will be in touch soon.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Nav shrink on scroll
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    // Contact form handler
+    document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn     = this.querySelector('.btn-submit');
+      const success = document.getElementById('form-success');
+      const name    = this.querySelector('#f-name').value.trim();
+      const email   = this.querySelector('#f-email').value.trim();
+      const story   = this.querySelector('#f-struggle').value.trim();
+      if (!name || !email || !story) {
+        alert('Please fill in your name, email, and what you\'re struggling with.');
+        return;
+      }
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      setTimeout(() => {
+        this.reset();
+        btn.style.display = 'none';
+        success.style.display = 'flex';
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>

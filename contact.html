@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── CONTACT LAYOUT ─────────────────────────────────── */
+    .contact-section {
+      padding: 6.5rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5.5rem;
+      align-items: start;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* ─── LEFT COLUMN ────────────────────────────────────── */
+    .contact-left p {
+      color: var(--white-dim);
+      font-size: 1rem;
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-skip {
+      font-size: 0.88rem;
+      color: var(--white-faint);
+      line-height: 1.6;
+    }
+
+    .contact-skip a {
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-skip a:hover { text-decoration: underline; }
+
+    /* Direct booking card */
+    .booking-card {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2rem 1.75rem;
+      margin-top: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lavender-dk), var(--lavender));
+    }
+
+    .booking-card-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 0.75rem;
+    }
+
+    .booking-card-headline {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .booking-card p {
+      font-size: 0.9rem;
+      color: var(--white-faint);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Contact details */
+    .contact-details {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--white-faint);
+    }
+
+    .contact-detail-item svg {
+      width: 16px; height: 16px;
+      color: var(--lavender);
+      flex-shrink: 0;
+    }
+
+    /* ─── FORM SECTION ───────────────────────────────────── */
+    .contact-form-wrap {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lavender-dk), var(--lavender));
+    }
+
+    .form-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subheading {
+      font-size: 0.9rem;
+      color: var(--white-faint);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* ─── FAQ STRIP ──────────────────────────────────────── */
+    .faq-section {
+      padding: 6rem 2rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: var(--white-faint);
+      line-height: 1.75;
+    }
+
+    .faq-a a {
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="freebies.html">Freebies</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Get in Touch</span>
+      <h1 class="page-headline">Let's Talk About<br><em>Your Dog.</em></h1>
+      <p class="page-sub">Fill out the form below and Caylen will personally review your inquiry and get back to you within 1–2 business days. Or skip straight to a call if you'd rather just talk.</p>
+    </div>
+  </div>
+
+
+  <!-- ─── CONTACT SECTION ──────────────────────────────────── -->
+  <section class="contact-section">
+    <div class="contact-inner">
+
+      <!-- Left column -->
+      <div class="contact-left">
+        <span class="eyebrow reveal">Before You Write</span>
+        <h2 class="section-headline reveal reveal-d1" style="font-size:clamp(1.8rem,3.5vw,2.6rem);">Caylen reads<br>every message.</h2>
+        <p class="reveal reveal-d2">There's no intake team, no automated responses. When you send an inquiry, Caylen reads it herself and responds personally. Tell her as much as you can — the more context she has, the better she can help.</p>
+
+        <p class="contact-skip reveal reveal-d3">
+          Prefer to skip the form and talk directly?<br>
+          <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer">Book your free 15-min call here →</a>
+        </p>
+
+        <!-- Direct booking card -->
+        <div class="booking-card reveal reveal-d3">
+          <div class="booking-card-label">Fastest Way to Start</div>
+          <div class="booking-card-headline">Book a Free Discovery Call</div>
+          <p>A quick 15-minute call to talk through your dog, your goals, and which program is the best fit. No obligation, no pressure.</p>
+          <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.78rem;padding:0.75rem 1.6rem;">Schedule My Call →</a>
+        </div>
+
+        <!-- Contact details -->
+        <div class="contact-details reveal reveal-d4">
+          <div class="contact-detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Hutto, TX — serving Austin &amp; surrounding areas
+          </div>
+          <div class="contact-detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.06 6.06l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            Responds within 1–2 business days
+          </div>
+          <div class="contact-detail-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            Virtual training available for non-local clients
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column — form -->
+      <div class="contact-form-wrap reveal reveal-d1">
+        <div class="form-heading">Tell me about your dog</div>
+        <div class="form-subheading">The more detail you share, the more Caylen can help when she responds.</div>
+
+        <!--
+          ═══════════════════════════════════════════════════════
+          FORMSPREE SETUP:
+          1. Go to https://formspree.io and create a free account
+          2. Create a new form — you'll get a Form ID like "xabcdefg"
+          3. Replace YOUR_FORM_ID below with your actual Form ID
+          Example: action="https://formspree.io/f/xabcdefg"
+          ═══════════════════════════════════════════════════════
+        -->
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate
+          aria-label="Contact form"
+        >
+          <!-- Formspree honeypot (spam prevention) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- Redirect after submission (optional) -->
+          <!-- <input type="hidden" name="_next" value="https://yoursite.com/thank-you.html"> -->
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-name">Your Name</label>
+              <input type="text" id="c-name" name="name" placeholder="Jane Smith" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address</label>
+              <input type="email" id="c-email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-phone">Phone Number</label>
+              <input type="tel" id="c-phone" name="phone" placeholder="(512) 555-0123" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="c-dog-name">Dog's Name</label>
+              <input type="text" id="c-dog-name" name="dog_name" placeholder="Biscuit">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-dog-age">Dog's Age &amp; Breed</label>
+              <input type="text" id="c-dog-age" name="dog_age_breed" placeholder="e.g. 2-year-old Lab mix">
+            </div>
+            <div class="form-group">
+              <label for="c-service">Interested In</label>
+              <select id="c-service" name="service_interest">
+                <option value="" disabled selected>Select a program…</option>
+                <option value="board-train">Board &amp; Train (4 weeks)</option>
+                <option value="private">Private Training</option>
+                <option value="virtual">Virtual Training</option>
+                <option value="boarding">Boarding (past clients)</option>
+                <option value="refresher">Refresher Session (past clients)</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="c-struggle">What are you struggling with?</label>
+            <textarea id="c-struggle" name="struggle" placeholder="Tell Caylen what's going on with your dog. The more detail, the better — breed, age, specific behaviors, what you've already tried, anything that feels relevant." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="c-referral">How did you hear about us?</label>
+            <select id="c-referral" name="referral">
+              <option value="" disabled selected>Select one…</option>
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">TikTok</option>
+              <option value="google">Google Search</option>
+              <option value="referral">Friend / Referral</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit">Send My Inquiry</button>
+
+          <div class="form-success" id="form-success" role="alert" aria-live="polite">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Your inquiry has been sent! Caylen will be in touch soon.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── FAQ ───────────────────────────────────────────────── -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <span class="eyebrow reveal">Quick Answers</span>
+      <h2 class="section-headline reveal reveal-d1" style="font-size:clamp(2rem,4vw,3rem);">Common Questions</h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item reveal">
+          <div class="faq-q">How does the free call work?</div>
+          <p class="faq-a">It's a 15-minute conversation — no sales pitch, just a chance to talk about your dog and your goals. Caylen will ask some questions, share her honest assessment, and let you know which program she'd recommend. You can <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer">book it directly here</a>.</p>
+        </div>
+
+        <div class="faq-item reveal reveal-d1">
+          <div class="faq-q">Do you share pricing on the website?</div>
+          <p class="faq-a">No — and intentionally so. Every dog is different, and pricing reflects the specific plan Caylen builds for your situation. You'll get full pricing details on your free call after she understands what your dog needs.</p>
+        </div>
+
+        <div class="faq-item reveal reveal-d1">
+          <div class="faq-q">I'm not local to Hutto. Can I still work with you?</div>
+          <p class="faq-a">Yes. Virtual training is available for clients anywhere. Some families also travel for the board &amp; train program — it's worth a conversation to see what makes sense for you.</p>
+        </div>
+
+        <div class="faq-item reveal reveal-d2">
+          <div class="faq-q">My dog is really reactive. Is that too much for board &amp; train?</div>
+          <p class="faq-a">Reactivity is one of Caylen's specialties — not a dealbreaker. Some of the most dramatic transformations she's seen have been with reactive dogs. Reach out and let's talk about what you're dealing with.</p>
+        </div>
+
+        <div class="faq-item reveal reveal-d2">
+          <div class="faq-q">How long until I hear back after submitting the form?</div>
+          <p class="faq-a">Caylen personally reviews every inquiry and typically responds within 1–2 business days. If you need something faster, <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer">book a call directly</a> — that's the quickest path to a conversation.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Nav shrink
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    // Form — works with both Formspree (real) and local fallback
+    const form    = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', function(e) {
+      const name    = this.querySelector('#c-name').value.trim();
+      const email   = this.querySelector('#c-email').value.trim();
+      const struggle = this.querySelector('#c-struggle').value.trim();
+
+      if (!name || !email || !struggle) {
+        e.preventDefault();
+        alert("Please fill in your name, email, and what you're struggling with.");
+        return;
+      }
+
+      // If the form action still has the placeholder, use JS fallback
+      if (this.action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        const btn = this.querySelector('.btn-submit');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        setTimeout(() => {
+          this.reset();
+          btn.style.display = 'none';
+          success.style.display = 'flex';
+        }, 800);
+      }
+      // Otherwise Formspree handles the real submission natively
+    });
+  </script>
+
+</body>
+</html>

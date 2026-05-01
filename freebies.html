@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Resources | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── COMING SOON HERO ───────────────────────────────── */
+    .coming-soon-wrap {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9rem 2rem 5rem;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow top-right */
+    .coming-soon-wrap::before {
+      content: '';
+      position: absolute;
+      top: -250px; right: -250px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(107, 79, 160, 0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Ambient glow bottom-left */
+    .coming-soon-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(196, 168, 232, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* subtle grid texture */
+    .coming-soon-grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(196, 168, 232, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196, 168, 232, 0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+
+    .coming-soon-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cs-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.2s ease forwards;
+    }
+
+    /* Large decorative "soon" word */
+    .cs-bg-word {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 18vw, 14rem);
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(196, 168, 232, 0.1);
+      pointer-events: none;
+      user-select: none;
+      display: block;
+      margin-bottom: -1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.1s ease forwards;
+    }
+
+    .cs-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.06;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.35s ease forwards;
+    }
+
+    .cs-headline em {
+      font-style: italic;
+      color: var(--lavender);
+    }
+
+    .cs-body {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--white-dim);
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s ease forwards;
+    }
+
+    /* Divider line */
+    .cs-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lavender), transparent);
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.45s ease forwards;
+    }
+
+    /* What's coming list */
+    .cs-coming-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s ease forwards;
+    }
+
+    .cs-coming-list li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      font-size: 0.93rem;
+      color: var(--white-dim);
+    }
+
+    .cs-coming-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--lavender);
+      opacity: 0.7;
+    }
+
+    .cs-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.75s ease forwards;
+    }
+
+    /* Meanwhile note */
+    .cs-meanwhile {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s ease forwards;
+    }
+
+    .cs-meanwhile p {
+      font-size: 0.88rem;
+      color: var(--white-faint);
+      line-height: 1.7;
+    }
+
+    .cs-meanwhile a {
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cs-meanwhile a:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="freebies.html" class="active">Freebies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── COMING SOON ───────────────────────────────────────── -->
+  <div class="coming-soon-wrap">
+    <div class="coming-soon-grain" aria-hidden="true"></div>
+
+    <div class="coming-soon-content">
+      <span class="cs-bg-word" aria-hidden="true">Soon</span>
+
+      <span class="cs-eyebrow">Free Resources</span>
+
+      <h1 class="cs-headline">Good things are<br><em>on their way.</em></h1>
+
+      <div class="cs-divider" aria-hidden="true"></div>
+
+      <p class="cs-body">
+        Caylen is putting together a collection of free training resources — guides, tips, and tools that will help you make real progress with your dog, even before you ever book a session.
+      </p>
+
+      <ul class="cs-coming-list" aria-label="What's coming">
+        <li>Beginner off-leash obedience guide</li>
+        <li>Reactive dog management tips</li>
+        <li>What to expect from board &amp; train</li>
+        <li>Training your dog for real-world situations</li>
+      </ul>
+
+      <div class="cs-ctas">
+        <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a Free Call Now</a>
+        <a href="contact.html" class="btn-outline">Get Notified</a>
+      </div>
+
+      <div class="cs-meanwhile">
+        <p>
+          In the meantime, the best free training content from Caylen lives on
+          <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">TikTok (@morethandogtraining)</a>
+          and
+          <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">Instagram (@morethandogtraining_)</a>.
+          Go watch her work — it's worth your time.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  </script>
+
+</body>
+</html>

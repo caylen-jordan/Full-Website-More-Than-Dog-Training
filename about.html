@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Caylen | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ─── ABOUT MAIN SECTION ─────────────────────────────── */
+    .about-section {
+      padding: 6.5rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5.5rem;
+      align-items: start;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .about-left-col { position: relative; }
+
+    /* Big decorative number */
+    .about-big-num {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 11vw, 9rem);
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--lavender-dk);
+      margin-bottom: 0.25rem;
+    }
+
+    .about-num-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Photo grid */
+    .about-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    .about-photo-grid-wide {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-top: 0.85rem;
+    }
+
+    /* Right column body text */
+    .about-right-col p {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.82;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-right-col p:last-of-type { margin-bottom: 0; }
+
+    /* ─── STATS ROW ──────────────────────────────────────── */
+    .stats-section {
+      padding: 5rem 2rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--lavender);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+      line-height: 1.4;
+    }
+
+    /* ─── PHILOSOPHY SECTION ─────────────────────────────── */
+    .philosophy-section {
+      padding: 6.5rem 2rem;
+      background: linear-gradient(180deg, #0C0818 0%, var(--black-soft) 100%);
+    }
+
+    .philosophy-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .philosophy-text p {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.82;
+      margin-bottom: 1.5rem;
+    }
+
+    .philosophy-text p:last-of-type { margin-bottom: 0; }
+
+    /* ─── CTA SECTION ────────────────────────────────────── */
+    .about-cta-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #130926 0%, #0A0618 50%, #1E1040 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(196, 168, 232, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-cta-section .container { position: relative; z-index: 1; }
+
+    .about-cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .about-cta-sub {
+      color: var(--white-dim);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .philosophy-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="active">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="freebies.html">Freebies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">About Caylen</span>
+      <h1 class="page-headline">10 Years.<br><em>One Passion.</em></h1>
+      <p class="page-sub">Dog training isn't just what Caylen does — it's who she is. Based in Hutto, TX, she's spent a decade building something that goes well beyond basic commands.</p>
+    </div>
+  </div>
+
+
+  <!-- ─── MAIN ABOUT ───────────────────────────────────────── -->
+  <section class="about-section">
+    <div class="about-grid">
+
+      <div class="about-left-col">
+        <div class="reveal">
+          <div class="about-big-num">10+</div>
+          <div class="about-num-label">Years of Experience</div>
+        </div>
+
+        <!-- Two portrait photos side by side -->
+        <div class="about-photo-grid reveal reveal-d2">
+          <img src="IMG_0409.JPG" alt="Caylen with a dog at the river" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:3px;border:1.5px solid rgba(196,168,232,0.3);">
+          <img src="DSC09880_Original.jpg" alt="Caylen with her Belgian Malinois" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:3px;border:1.5px solid rgba(196,168,232,0.3);">
+        </div>
+
+        <!-- Wide landscape photo below -->
+        <div class="about-photo-grid-wide reveal reveal-d3">
+          <img src="DSC08907.JPG" alt="Caylen training a dog in the park" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 60%;border-radius:3px;border:1.5px solid rgba(196,168,232,0.3);display:block;">
+        </div>
+      </div>
+
+      <div class="about-right-col">
+        <span class="eyebrow reveal">My Story</span>
+        <h2 class="section-headline reveal reveal-d1">More Than a Trainer.<br>A Genuine Partner<br><em>for You and Your Dog.</em></h2>
+
+        <p class="reveal reveal-d2">
+          I've been working with dogs for over ten years — and in that time, I've worked with hundreds of dogs across every breed, age, temperament, and challenge imaginable. From brand-new puppies learning the basics to reactive adult dogs that had been written off by other trainers, I've seen it all.
+        </p>
+        <p class="reveal reveal-d2">
+          I founded More Than Dog Training in 2018 in Hutto, TX with a simple belief: every dog is capable of more than their owners are being told. With the right training — and the right trainer — most behavioral challenges can be worked through. You just have to be willing to put in the work.
+        </p>
+        <p class="reveal reveal-d3">
+          My specialty is off-leash obedience and reactivity. These are the two areas where I see the biggest transformation and the most life-changing results — a dog that can be trusted off-leash in the real world, or a reactive dog that finally gets to enjoy a walk without melting down. Those wins never get old.
+        </p>
+        <p class="reveal reveal-d3">
+          What sets me apart isn't just the results — it's how I get there. I'm direct and honest about what's realistic, genuinely invested in every dog I work with, and committed to making sure the training sticks when your dog comes home. You won't get a polished sales pitch from me. You'll get the truth, a solid plan, and a trainer who actually shows up.
+        </p>
+
+        <blockquote class="pull-quote reveal reveal-d4">
+          "Don't give up on them.<br>Let's work on it together."
+        </blockquote>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── STATS ─────────────────────────────────────────────── -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item reveal reveal-d1">
+        <div class="stat-num">2018</div>
+        <div class="stat-label">Founded in Hutto, TX</div>
+      </div>
+      <div class="stat-item reveal reveal-d2">
+        <div class="stat-num">4 wk</div>
+        <div class="stat-label">Board &amp; Train Program</div>
+      </div>
+      <div class="stat-item reveal reveal-d3">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Customized Plans</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── PHILOSOPHY ───────────────────────────────────────── -->
+  <section class="philosophy-section">
+    <div class="philosophy-inner">
+
+      <div class="philosophy-text">
+        <span class="eyebrow reveal">The Approach</span>
+        <h2 class="section-headline reveal reveal-d1">Training That Works<br><em>In Real Life</em></h2>
+        <p class="reveal reveal-d2">
+          A lot of training works great — until it doesn't. Until your dog sees a squirrel, a stranger, another dog, or a skateboard and everything goes out the window. I train for the real world, not the training field.
+        </p>
+        <p class="reveal reveal-d2">
+          Every program is built around your dog's specific challenges and your specific goals. There's no off-the-shelf curriculum here. What works for one dog won't work for another, and I build every session accordingly.
+        </p>
+        <p class="reveal reveal-d3">
+          I'm passionate about off-leash obedience because it represents real trust — a dog that can be off leash safely is a dog that genuinely understands what's being asked of them. That level of reliability doesn't come from shortcuts, and I don't take any.
+        </p>
+        <p class="reveal reveal-d3">
+          I'm equally passionate about helping reactive dogs — not because reactivity is a quick fix, but because seeing a dog finally relax on a walk is one of the most rewarding things in this work. Both the dog and the owner get their freedom back.
+        </p>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <img src="DSC03316-1.jpg" alt="Caylen on the dock with her dog" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:3px;border:1.5px solid rgba(196,168,232,0.3);display:block;">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── BOTTOM CTA ────────────────────────────────────────── -->
+  <div class="about-cta-section">
+    <div class="container">
+      <h2 class="about-cta-headline reveal">Ready to meet<br>your trainer?</h2>
+      <p class="about-cta-sub reveal reveal-d1">The free call is a no-pressure conversation about your dog, your goals, and whether we're a good fit. I personally take every call.</p>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="btn-primary reveal reveal-d2">Book a Free Call</a>
+    </div>
+  </div>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  </script>
+
+</body>
+</html>
