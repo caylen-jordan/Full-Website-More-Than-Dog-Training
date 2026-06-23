@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png.png">
+  <title>Client Agreement | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .agreement-section {
+      padding: 6rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .agreement-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .agreement-intro {
+      font-size: 1rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Contract sections */
+    .contract-section {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contract-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .contract-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 0.6rem;
+    }
+
+    .contract-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .contract-section p {
+      font-size: 0.95rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* Sign section */
+    .sign-section {
+      padding: 5rem 2rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+
+    .sign-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .sign-card {
+      background: var(--black-card);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .sign-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--lavender-dk), var(--lavender));
+    }
+
+    .sign-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+    }
+
+    .sign-card p {
+      font-size: 0.93rem;
+      color: var(--white-faint);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .btn-sign {
+      display: inline-block;
+      background: var(--lavender);
+      color: var(--black-soft);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.25rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-sign:hover {
+      background: var(--lavender-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 168, 232, 0.25);
+    }
+
+    .sign-note {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--white-faint);
+    }
+
+    .sign-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .sign-checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--white-dim);
+    }
+
+    .sign-checklist-item svg {
+      width: 14px;
+      height: 14px;
+      color: var(--lavender);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 700px) {
+      .sign-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="freebies.html">Freebies</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Service Agreement</span>
+      <h1 class="page-headline">Client<br><em>Agreement</em></h1>
+      <p class="page-sub">Please read each section carefully before signing. This agreement outlines how we work together and protects both you and your dog.</p>
+    </div>
+  </div>
+
+
+  <!-- ─── CONTRACT BODY ────────────────────────────────────── -->
+  <section class="agreement-section">
+    <div class="agreement-inner">
+
+      <p class="agreement-intro reveal">
+        This agreement is between <strong style="color:var(--white);">More Than Dog Training</strong> (owner: Caylen Jordan, Hutto, TX) and the client named below. By signing, you confirm that you have read, understood, and agree to all terms outlined in this document. Both owners of the dog — including spouses or partners — are required to sign.
+      </p>
+
+      <!-- SAFETY PROTOCOLS -->
+      <div class="contract-section reveal">
+        <div class="contract-label">Section 1</div>
+        <h3>Safety Protocols</h3>
+        <p>
+          Client agrees to disclose any known history of aggression, reactivity, fear, or behavioral concerns prior to and throughout all training sessions. All dogs must remain on a secure leash at all times unless otherwise directed by the trainer. Client is responsible for maintaining control of their dog at all times and agrees to follow all safety instructions provided by More Than Dog Training. More Than Dog Training reserves the right to modify or end a session at any time if a safety concern arises, with no refund owed for the unused portion of that session.
+        </p>
+      </div>
+
+      <!-- LIABILITY -->
+      <div class="contract-section reveal reveal-d1">
+        <div class="contract-label">Section 2</div>
+        <h3>Liability</h3>
+        <p>
+          Client acknowledges that dog training involves inherent risk, including but not limited to bites, scratches, and other physical injury. Client agrees to hold More Than Dog Training and its owner harmless from any and all claims, damages, losses, or expenses — including attorney's fees — arising from injury to any person, animal, or property caused by the client's dog, whether during or outside of training sessions. Client assumes full financial and legal responsibility for any harm caused by their dog at any time.
+        </p>
+      </div>
+
+      <!-- VACCINATIONS -->
+      <div class="contract-section reveal reveal-d1">
+        <div class="contract-label">Section 3</div>
+        <h3>Vaccinations, Licensing &amp; Identification Records</h3>
+        <p>
+          Client certifies that their dog is current on all vaccinations required by Texas law, including rabies, and is properly licensed per local ordinance. Client agrees to provide proof of vaccination records upon request. Dogs with unknown or lapsed vaccination histories may be refused service until documentation is provided. Client is responsible for ensuring all records remain current throughout the duration of training.
+        </p>
+      </div>
+
+      <!-- TRAINING METHODS -->
+      <div class="contract-section reveal reveal-d2">
+        <div class="contract-label">Section 4</div>
+        <h3>Training Methods &amp; Tools</h3>
+        <p>
+          More Than Dog Training uses balanced training methods tailored to each dog's individual temperament and needs. These methods may include positive reinforcement, marker training, leash pressure, e-collar conditioning, and other tools deemed appropriate by the trainer. Client understands and consents to the use of these methods and tools. Client agrees to communicate any concerns openly and to refrain from introducing conflicting methods or tools without first consulting with the trainer.
+        </p>
+      </div>
+
+      <!-- SATISFACTION GUARANTEES -->
+      <div class="contract-section reveal reveal-d2">
+        <div class="contract-label">Section 5</div>
+        <h3>Satisfaction Guarantees</h3>
+        <p>
+          Training outcomes are influenced by many factors, including the dog's temperament, history, age, and health, as well as the owner's consistency and participation outside of sessions. While More Than Dog Training is fully committed to achieving the best possible results, no specific outcome or timeline can be guaranteed. Results vary by dog and by owner. More Than Dog Training does not guarantee any particular behavior change, and no refunds will be issued based solely on unmet expectations.
+        </p>
+      </div>
+
+      <!-- OWNER COMMITMENT -->
+      <div class="contract-section reveal reveal-d3">
+        <div class="contract-label">Section 6</div>
+        <h3>Owner Commitment</h3>
+        <p>
+          Client understands that the success of training depends significantly on their active participation between sessions. Client agrees to practice assigned exercises consistently, use the tools and methods taught by the trainer, follow all recommendations provided, and communicate openly about challenges, setbacks, or changes in their dog's behavior. Failure to maintain consistency between sessions may limit results.
+        </p>
+      </div>
+
+      <!-- PAYMENT -->
+      <div class="contract-section reveal reveal-d3">
+        <div class="contract-label">Section 7</div>
+        <h3>Payment</h3>
+        <p>
+          Payment is due at the time of each session unless otherwise agreed upon in writing. For packages, payment is due in full prior to the first session unless a written payment plan has been arranged. Accepted payment methods include Venmo (@Caylen-Jordan) and cash. Unpaid balances may result in the suspension of upcoming sessions until the balance is resolved.
+        </p>
+      </div>
+
+      <!-- CANCELLATIONS & REFUNDS -->
+      <div class="contract-section reveal reveal-d4">
+        <div class="contract-label">Section 8</div>
+        <h3>Cancellations &amp; Refunds</h3>
+        <p>
+          Clients must provide a minimum of 24 hours' notice to cancel or reschedule a session. Cancellations made with less than 24 hours' notice will be charged in full. For board &amp; train programs, a non-refundable deposit is required to hold a spot, and the remaining balance is non-refundable once the dog has been dropped off. Unused package sessions may be considered for a refund at the trainer's discretion within 30 days of purchase, minus a $50 administrative fee.
+        </p>
+      </div>
+
+      <!-- PHOTO & VIDEO RELEASE -->
+      <div class="contract-section reveal reveal-d4">
+        <div class="contract-label">Section 9</div>
+        <h3>Photo &amp; Video Release</h3>
+        <p>
+          Client grants More Than Dog Training permission to photograph and/or video record their dog — and the client, if present — during training sessions for promotional use, including but not limited to social media, website, and marketing materials. Clients who wish to opt out of this release must notify the trainer in writing before services begin. Opting out will not affect the quality of services received.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── SIGN SECTION ─────────────────────────────────────── -->
+  <section class="sign-section">
+    <div class="sign-inner">
+      <span class="eyebrow reveal">You're Almost Done</span>
+      <h2 class="section-headline reveal reveal-d1" style="font-size:clamp(1.8rem,3.5vw,2.8rem);">Ready to sign?</h2>
+      <p class="reveal reveal-d2" style="color:var(--white-faint);font-size:0.95rem;line-height:1.75;">Once you've read everything above, click below to open the signature form. You'll confirm each section and provide your e-signature — it only takes a minute.</p>
+
+      <div class="sign-card reveal reveal-d2">
+        <h3>Sign the Client Agreement</h3>
+        <p>The signature form collects your name, your partner's name (if applicable), and your acknowledgment of each section above. Both parties on the account are required to sign.</p>
+
+        <div class="sign-checklist">
+          <div class="sign-checklist-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Confirm all 9 sections
+          </div>
+          <div class="sign-checklist-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Provide your e-signature (typed full name)
+          </div>
+          <div class="sign-checklist-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Spouse or partner signs separately if applicable
+          </div>
+        </div>
+
+        <!--
+          ═══════════════════════════════════════════════════════
+          GOOGLE FORM SETUP:
+          1. Go to forms.google.com and create a new form
+          2. Add fields for: Full Name, Spouse/Partner Name (optional),
+             Today's Date, checkboxes for each of the 9 sections,
+             E-Signature (type full name), Spouse E-Signature (optional)
+          3. Click Send → Link icon → copy the URL
+          4. Replace AGREEMENT_FORM_URL below with that URL
+          Example: href="https://forms.gle/abcdef123456"
+          ═══════════════════════════════════════════════════════
+        -->
+        <a
+          href="https://forms.gle/WQLmMUXjNLfKZZYF6"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-sign"
+        >
+          Sign the Agreement &rarr;
+        </a>
+
+        <p class="sign-note">Opens in Google Forms &mdash; takes less than 2 minutes</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  </script>
+
+</body>
+</html>
