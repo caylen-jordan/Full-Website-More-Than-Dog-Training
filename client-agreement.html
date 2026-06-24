@@ -296,12 +296,127 @@
       margin-top: 1.5rem;
     }
 
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.93rem;
+      color: var(--white-dim);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .radio-group input[type="radio"] {
+      accent-color: var(--lavender);
+      cursor: pointer;
+    }
+
+    .conditional-field {
+      display: none;
+    }
+
+    .conditional-field.visible {
+      display: flex;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .contract-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contract-list li {
+      padding-left: 1.1rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.65;
+    }
+
+    .contract-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--lavender);
+    }
+
+    .contract-subhead {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 1rem 0 0.4rem;
+    }
+
+    .info-only-section {
+      background: rgba(196,168,232,0.04);
+      border: 1px dashed rgba(196,168,232,0.2);
+      border-radius: 3px;
+      padding: 1.5rem;
+    }
+
+    .info-only-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .info-only-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .optional-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.1rem 0.45rem;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+
     @media (max-width: 700px) {
       .sign-card {
         padding: 2rem 1.5rem;
       }
       .form-row {
         grid-template-columns: 1fr;
+      }
+      .form-field.full {
+        grid-column: 1;
       }
     }
   </style>
@@ -353,267 +468,404 @@
     <div class="agreement-inner">
 
       <p class="agreement-intro reveal">
-        This agreement is between <strong style="color:var(--white);">More Than Dog Training</strong> (owner: Caylen Jordan, Hutto, TX) and the client named below. By signing, you confirm that you have read, understood, and agree to all terms outlined in this document. Both owners of the dog — including spouses or partners — are required to sign.
+        <strong style="color:var(--white);">More Than Dog Training</strong> &middot; Client Agreement &amp; Policy Acknowledgment<br>
+        Hutto, TX &middot; Serving the Greater Austin Area<br><br>
+        This agreement must be completed in full prior to the start of any services. Please read each section carefully before acknowledging.
       </p>
 
-      <!-- SAFETY PROTOCOLS -->
-      <div class="contract-section reveal">
-        <div class="contract-label">Section 1</div>
-        <h3>Safety Protocols</h3>
-        <p>
-          Client agrees to disclose any known history of aggression, reactivity, fear, or behavioral concerns prior to and throughout all training sessions. All dogs must remain on a secure leash at all times unless otherwise directed by the trainer. Client is responsible for maintaining control of their dog at all times and agrees to follow all safety instructions provided by More Than Dog Training. More Than Dog Training reserves the right to modify or end a session at any time if a safety concern arises, with no refund owed for the unused portion of that session.
-        </p>
-      </div>
+      <form class="agreement-form" id="agreementForm" action="https://formspree.io/f/mkolokev" method="POST">
+      <input type="hidden" name="_subject" value="New Client Agreement Signed">
 
-      <!-- LIABILITY -->
-      <div class="contract-section reveal reveal-d1">
-        <div class="contract-label">Section 2</div>
-        <h3>Liability</h3>
-        <p>
-          Client acknowledges that dog training involves inherent risk, including but not limited to bites, scratches, and other physical injury. Client agrees to hold More Than Dog Training and its owner harmless from any and all claims, damages, losses, or expenses — including attorney's fees — arising from injury to any person, animal, or property caused by the client's dog, whether during or outside of training sessions. Client assumes full financial and legal responsibility for any harm caused by their dog at any time.
-        </p>
-      </div>
-
-      <!-- VACCINATIONS -->
-      <div class="contract-section reveal reveal-d1">
-        <div class="contract-label">Section 3</div>
-        <h3>Vaccinations, Licensing &amp; Identification Records</h3>
-        <p>
-          Client certifies that their dog is current on all vaccinations required by Texas law, including rabies, and is properly licensed per local ordinance. Client agrees to provide proof of vaccination records upon request. Dogs with unknown or lapsed vaccination histories may be refused service until documentation is provided. Client is responsible for ensuring all records remain current throughout the duration of training.
-        </p>
-      </div>
-
-      <!-- TRAINING METHODS -->
-      <div class="contract-section reveal reveal-d2">
-        <div class="contract-label">Section 4</div>
-        <h3>Training Methods &amp; Tools</h3>
-        <p>
-          More Than Dog Training uses balanced training methods tailored to each dog's individual temperament and needs. These methods may include positive reinforcement, marker training, leash pressure, e-collar conditioning, and other tools deemed appropriate by the trainer. Client understands and consents to the use of these methods and tools. Client agrees to communicate any concerns openly and to refrain from introducing conflicting methods or tools without first consulting with the trainer.
-        </p>
-      </div>
-
-      <!-- SATISFACTION GUARANTEES -->
-      <div class="contract-section reveal reveal-d2">
-        <div class="contract-label">Section 5</div>
-        <h3>Satisfaction Guarantees</h3>
-        <p>
-          Training outcomes are influenced by many factors, including the dog's temperament, history, age, and health, as well as the owner's consistency and participation outside of sessions. While More Than Dog Training is fully committed to achieving the best possible results, no specific outcome or timeline can be guaranteed. Results vary by dog and by owner. More Than Dog Training does not guarantee any particular behavior change, and no refunds will be issued based solely on unmet expectations.
-        </p>
-      </div>
-
-      <!-- OWNER COMMITMENT -->
-      <div class="contract-section reveal reveal-d3">
-        <div class="contract-label">Section 6</div>
-        <h3>Owner Commitment</h3>
-        <p>
-          Client understands that the success of training depends significantly on their active participation between sessions. Client agrees to practice assigned exercises consistently, use the tools and methods taught by the trainer, follow all recommendations provided, and communicate openly about challenges, setbacks, or changes in their dog's behavior. Failure to maintain consistency between sessions may limit results.
-        </p>
-      </div>
-
-      <!-- PAYMENT -->
-      <div class="contract-section reveal reveal-d3">
-        <div class="contract-label">Section 7</div>
-        <h3>Payment</h3>
-        <p>
-          Payment is due at the time of each session unless otherwise agreed upon in writing. For packages, payment is due in full prior to the first session unless a written payment plan has been arranged. Accepted payment methods include Venmo (@Caylen-Jordan) and cash. Unpaid balances may result in the suspension of upcoming sessions until the balance is resolved.
-        </p>
-      </div>
-
-      <!-- CANCELLATIONS & REFUNDS -->
-      <div class="contract-section reveal reveal-d4">
-        <div class="contract-label">Section 8</div>
-        <h3>Cancellations &amp; Refunds</h3>
-        <p>
-          Clients must provide a minimum of 24 hours' notice to cancel or reschedule a session. Cancellations made with less than 24 hours' notice will be charged in full. For board &amp; train programs, a non-refundable deposit is required to hold a spot, and the remaining balance is non-refundable once the dog has been dropped off. Unused package sessions may be considered for a refund at the trainer's discretion within 30 days of purchase, minus a $50 administrative fee.
-        </p>
-      </div>
-
-      <!-- PHOTO & VIDEO RELEASE -->
-      <div class="contract-section reveal reveal-d4">
-        <div class="contract-label">Section 9</div>
-        <h3>Photo &amp; Video Release</h3>
-        <p>
-          Client grants More Than Dog Training permission to photograph and/or video record their dog — and the client, if present — during training sessions for promotional use, including but not limited to social media, website, and marketing materials. Clients who wish to opt out of this release must notify the trainer in writing before services begin. Opting out will not affect the quality of services received.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ─── SIGN SECTION ─────────────────────────────────────── -->
-  <section class="sign-section">
-    <div class="sign-inner" style="max-width:860px;">
-      <span class="eyebrow reveal">You're Almost Done</span>
-      <h2 class="section-headline reveal reveal-d1" style="font-size:clamp(1.8rem,3.5vw,2.8rem);">Sign the Agreement</h2>
-      <p class="reveal reveal-d2" style="color:var(--white-faint);font-size:0.95rem;line-height:1.75;">Check each section to confirm you've read and understood it, then provide your e-signature below. Both parties on the account are required to sign.</p>
-
-      <div class="sign-card reveal reveal-d3">
-
-        <!-- FORM — action will be set to Formspree endpoint -->
-        <form
-          class="agreement-form"
-          id="agreementForm"
-          action="https://formspree.io/f/mkolokev"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New Client Agreement Signed">
-
-          <!-- SECTION 1 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 1</span>
-            <div class="form-check-title">Safety Protocols</div>
-            <p class="form-check-text">Client agrees to disclose any known history of aggression, reactivity, fear, or behavioral concerns prior to and throughout all training sessions. All dogs must remain on a secure leash at all times unless otherwise directed by the trainer. Client is responsible for maintaining control of their dog at all times and agrees to follow all safety instructions provided by More Than Dog Training. More Than Dog Training reserves the right to modify or end a session at any time if a safety concern arises, with no refund owed for the unused portion of that session.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section1" value="agreed" required>
-              <span>I have read and agree to Section 1: Safety Protocols</span>
-            </label>
+      <!-- SECTION 1 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 1</span>
+        <div class="form-check-title">Client &amp; Dog Information</div>
+        <p class="form-check-text">Please complete all fields below. This information is used to ensure the safety and wellbeing of your dog throughout the training process.</p>
+        <div class="form-row" style="margin-top:1rem;">
+          <div class="form-field">
+            <label for="clientName">Client Full Name *</label>
+            <input type="text" id="clientName" name="client_name" placeholder="Jane Smith" required>
           </div>
-
-          <!-- SECTION 2 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 2</span>
-            <div class="form-check-title">Liability</div>
-            <p class="form-check-text">Client acknowledges that dog training involves inherent risk, including but not limited to bites, scratches, and other physical injury. Client agrees to hold More Than Dog Training and its owner harmless from any and all claims, damages, losses, or expenses — including attorney's fees — arising from injury to any person, animal, or property caused by the client's dog, whether during or outside of training sessions. Client assumes full financial and legal responsibility for any harm caused by their dog at any time.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section2" value="agreed" required>
-              <span>I have read and agree to Section 2: Liability</span>
-            </label>
+          <div class="form-field">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone_number" placeholder="(555) 555-5555" required>
           </div>
-
-          <!-- SECTION 3 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 3</span>
-            <div class="form-check-title">Vaccinations, Licensing &amp; Identification Records</div>
-            <p class="form-check-text">Client certifies that their dog is current on all vaccinations required by Texas law, including rabies, and is properly licensed per local ordinance. Client agrees to provide proof of vaccination records upon request. Dogs with unknown or lapsed vaccination histories may be refused service until documentation is provided. Client is responsible for ensuring all records remain current throughout the duration of training.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section3" value="agreed" required>
-              <span>I have read and agree to Section 3: Vaccinations, Licensing &amp; Identification Records</span>
-            </label>
-          </div>
-
-          <!-- SECTION 4 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 4</span>
-            <div class="form-check-title">Training Methods &amp; Tools</div>
-            <p class="form-check-text">More Than Dog Training uses balanced training methods tailored to each dog's individual temperament and needs. These methods may include positive reinforcement, marker training, leash pressure, e-collar conditioning, and other tools deemed appropriate by the trainer. Client understands and consents to the use of these methods and tools. Client agrees to communicate any concerns openly and to refrain from introducing conflicting methods or tools without first consulting with the trainer.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section4" value="agreed" required>
-              <span>I have read and agree to Section 4: Training Methods &amp; Tools</span>
-            </label>
-          </div>
-
-          <!-- SECTION 5 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 5</span>
-            <div class="form-check-title">Satisfaction Guarantees</div>
-            <p class="form-check-text">Training outcomes are influenced by many factors, including the dog's temperament, history, age, and health, as well as the owner's consistency and participation outside of sessions. While More Than Dog Training is fully committed to achieving the best possible results, no specific outcome or timeline can be guaranteed. Results vary by dog and by owner. More Than Dog Training does not guarantee any particular behavior change, and no refunds will be issued based solely on unmet expectations.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section5" value="agreed" required>
-              <span>I have read and agree to Section 5: Satisfaction Guarantees</span>
-            </label>
-          </div>
-
-          <!-- SECTION 6 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 6</span>
-            <div class="form-check-title">Owner Commitment</div>
-            <p class="form-check-text">Client understands that the success of training depends significantly on their active participation between sessions. Client agrees to practice assigned exercises consistently, use the tools and methods taught by the trainer, follow all recommendations provided, and communicate openly about challenges, setbacks, or changes in their dog's behavior. Failure to maintain consistency between sessions may limit results.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section6" value="agreed" required>
-              <span>I have read and agree to Section 6: Owner Commitment</span>
-            </label>
-          </div>
-
-          <!-- SECTION 7 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 7</span>
-            <div class="form-check-title">Payment</div>
-            <p class="form-check-text">Payment is due at the time of each session unless otherwise agreed upon in writing. For packages, payment is due in full prior to the first session unless a written payment plan has been arranged. Accepted payment methods include Venmo (@Caylen-Jordan) and cash. Unpaid balances may result in the suspension of upcoming sessions until the balance is resolved.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section7" value="agreed" required>
-              <span>I have read and agree to Section 7: Payment</span>
-            </label>
-          </div>
-
-          <!-- SECTION 8 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 8</span>
-            <div class="form-check-title">Cancellations &amp; Refunds</div>
-            <p class="form-check-text">Clients must provide a minimum of 24 hours' notice to cancel or reschedule a session. Cancellations made with less than 24 hours' notice will be charged in full. For board &amp; train programs, a non-refundable deposit is required to hold a spot, and the remaining balance is non-refundable once the dog has been dropped off. Unused package sessions may be considered for a refund at the trainer's discretion within 30 days of purchase, minus a $50 administrative fee.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section8" value="agreed" required>
-              <span>I have read and agree to Section 8: Cancellations &amp; Refunds</span>
-            </label>
-          </div>
-
-          <!-- SECTION 9 -->
-          <div class="form-check-group">
-            <span class="form-check-label">Section 9</span>
-            <div class="form-check-title">Photo &amp; Video Release</div>
-            <p class="form-check-text">Client grants More Than Dog Training permission to photograph and/or video record their dog — and the client, if present — during training sessions for promotional use, including but not limited to social media, website, and marketing materials. Clients who wish to opt out of this release must notify the trainer in writing before services begin. Opting out will not affect the quality of services received.</p>
-            <label class="form-checkbox-row">
-              <input type="checkbox" name="section9" value="agreed" required>
-              <span>I have read and agree to Section 9: Photo &amp; Video Release</span>
-            </label>
-          </div>
-
-          <hr class="form-divider">
-
-          <!-- CLIENT INFO -->
-          <div class="form-fields">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="clientName">Client Full Name *</label>
-                <input type="text" id="clientName" name="client_name" placeholder="Jane Smith" required>
-              </div>
-              <div class="form-field">
-                <label for="dogName">Dog's Name *</label>
-                <input type="text" id="dogName" name="dog_name" placeholder="Buddy" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="partnerName">Partner / Spouse Full Name</label>
-                <input type="text" id="partnerName" name="partner_name" placeholder="Optional">
-              </div>
-              <div class="form-field">
-                <label for="signDate">Date *</label>
-                <input type="date" id="signDate" name="date" required>
-              </div>
-            </div>
-          </div>
-
-          <hr class="form-divider">
-
-          <!-- SIGNATURES -->
-          <div class="form-fields">
-            <div class="form-field">
-              <label for="signature">E-Signature — Type Your Full Name *</label>
-              <input type="text" id="signature" name="signature" placeholder="Jane Smith" required>
-              <p class="form-sig-note">By typing your full name above, you are signing this agreement electronically. This e-signature is legally binding.</p>
-            </div>
-            <div class="form-field">
-              <label for="partnerSignature">Partner / Spouse E-Signature</label>
-              <input type="text" id="partnerSignature" name="partner_signature" placeholder="Optional — type full name">
-              <p class="form-sig-note">Required if a partner or spouse is listed above.</p>
-            </div>
-          </div>
-
-          <div class="form-submit-wrap">
-            <button type="submit" class="btn-submit">Submit Signed Agreement &rarr;</button>
-            <p class="sign-note" style="margin-top:1rem;">A copy will be sent to More Than Dog Training. Please screenshot this page for your own records.</p>
-          </div>
-
-        </form>
-
-        <div class="form-success" id="formSuccess">
-          <strong style="color:var(--white);font-size:1.1rem;">Agreement received.</strong><br>
-          Thank you for signing. Caylen will be in touch shortly.
         </div>
-
+        <div class="form-row">
+          <div class="form-field">
+            <label for="emailAddr">Email Address *</label>
+            <input type="email" id="emailAddr" name="email_address" placeholder="jane@email.com" required>
+          </div>
+          <div class="form-field">
+            <label for="dogName">Dog's Name *</label>
+            <input type="text" id="dogName" name="dog_name" placeholder="Buddy" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="breed">Breed *</label>
+            <input type="text" id="breed" name="breed" placeholder="e.g. Lab Mix" required>
+          </div>
+          <div class="form-field">
+            <label for="dogAge">Age *</label>
+            <input type="text" id="dogAge" name="age" placeholder="e.g. 2 years" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Has your dog been spayed/neutered? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="spayed_neutered" value="Yes" required> Yes</label>
+              <label><input type="radio" name="spayed_neutered" value="No"> No</label>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- SECTION 2 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 2</span>
+        <div class="form-check-title">Medical Information</div>
+        <p class="form-check-text">Please email any of the following to <strong style="color:var(--white);">caylen@morethandogtraining.com</strong> prior to your start date, with your dog's name in the subject line:</p>
+        <ul class="contract-list">
+          <li>Vaccinations received within the last 6 months</li>
+          <li>Recent injuries or surgeries, including spay/neuter procedures</li>
+          <li>Chronic illnesses or ongoing health conditions</li>
+          <li>Current medications with dosage amounts (including antibiotics and probiotics)</li>
+          <li>Known allergies, whether environmental or food-related</li>
+        </ul>
+        <div class="form-row" style="margin-top:1rem;">
+          <div class="form-field full">
+            <label for="dogFood">Dog's Current Food * — Include brand, serving size, and feeding schedule</label>
+            <textarea id="dogFood" name="dog_food" placeholder="e.g. Royal Canin kibble, 1 cup twice daily at 7am and 6pm" required></textarea>
+          </div>
+        </div>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section2" value="agreed" required>
+          <span>I certify that all medical, dietary, and behavioral information provided is accurate and complete to the best of my knowledge. I understand that failure to disclose known conditions, including prior bites or history of aggression, releases More Than Dog Training from any resulting liability and places full responsibility on me.</span>
+        </label>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 3</span>
+        <div class="form-check-title">Behavioral History &amp; Bite Disclosure</div>
+        <p class="form-check-text">I warrant that, to the best of my knowledge, I have fully disclosed any and all history of aggression, reactivity, resource guarding, fear-based behavior, prior bites, or other behavioral concerns.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">I acknowledge that failure to disclose a known bite history or aggressive behavior prior to the start of services constitutes a material misrepresentation. In such cases, More Than Dog Training shall bear no liability for any resulting incident, and all costs, damages, and legal responsibility remain solely with me.</p>
+        <div class="form-row" style="margin-top:0.75rem;">
+          <div class="form-field">
+            <label>Has your dog ever bitten a person or another animal? *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="bitten" value="Yes" id="bittenYes" required> Yes</label>
+              <label><input type="radio" name="bitten" value="No" id="bittenNo"> No</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-row conditional-field" id="bittenDetail">
+          <div class="form-field full">
+            <label for="bittenDesc">Please describe: *</label>
+            <textarea id="bittenDesc" name="bitten_description" placeholder="Who was bitten, what happened, severity..."></textarea>
+          </div>
+        </div>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section3" value="agreed" required>
+          <span>I have read and agree to Section 3: Behavioral History &amp; Bite Disclosure</span>
+        </label>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 4</span>
+        <div class="form-check-title">Safety Protocols</div>
+        <p class="contract-subhead">In-Home Lessons</p>
+        <p class="form-check-text">For the safety of all parties, please ensure your dog is secured prior to your trainer's arrival. Acceptable methods include:</p>
+        <ul class="contract-list">
+          <li>Leashed and held by a responsible adult</li>
+          <li>Crated</li>
+          <li>On "place" with a tie-back</li>
+          <li>In a separate room (bedroom or bathroom)</li>
+        </ul>
+        <p class="form-check-text" style="margin-top:0.75rem;">This prevents escapes out the front door and reduces risk of unexpected interactions at entry. During all in-home lessons, your dog must wear a secure, properly fitted buckle collar they cannot slip out of, and must be on a standard 6-foot leash or slip lead at all times when outside of their crate.</p>
+        <p class="form-check-text" style="margin-top:0.5rem;">The following equipment is <strong style="color:var(--white);">NOT permitted</strong> during training sessions:</p>
+        <ul class="contract-list">
+          <li>Harnesses of any kind</li>
+          <li>Elastic or retractable ("flexi") leashes</li>
+        </ul>
+        <p class="contract-subhead">Board &amp; Train — Drop-Off &amp; Pick-Up</p>
+        <p class="form-check-text">All dogs must arrive leashed, crated, or otherwise fully secured during drop-off and pick-up handoffs. More Than Dog Training is not responsible for incidents that occur as a result of a dog being unsecured during transport or transfer.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section4" value="agreed" required>
+          <span>I have read and agree to Section 4: Safety Protocols</span>
+        </label>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 5</span>
+        <div class="form-check-title">Liability Release</div>
+        <p class="form-check-text">More Than Dog Training takes every reasonable precaution to ensure a safe environment for all clients, human and canine alike. However, due to the inherently unpredictable nature of animal behavior and human-animal interaction, no training environment can be guaranteed entirely risk-free.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">By signing below, I (on behalf of myself and any individuals in my household) agree to release and hold harmless More Than Dog Training, its owner, assistants, volunteers, and any participating property owners from all liability, claims, damages, illness, injury, or death that may arise directly or indirectly — now or in the future — as a result of participation in any service provided by More Than Dog Training.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">I assume full financial and legal responsibility for any damage, injury, illness, or death caused by my dog or any person under my care during the course of training services.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">This agreement shall be governed by the laws of the State of Texas. Any disputes arising from this agreement shall first be addressed through good-faith negotiation between the parties. If unresolved, both parties agree to pursue binding mediation in Williamson County, Texas prior to initiating any legal action.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section5" value="agreed" required>
+          <span>I have read and agree to Section 5: Liability Release</span>
+        </label>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 6</span>
+        <div class="form-check-title">Vaccinations, Licensing &amp; Identification</div>
+        <p class="form-check-text">Any dog exhibiting symptoms of illness, injury, or any contagious condition — including but not limited to sneezing, coughing, runny eyes or nose, vomiting, diarrhea, lethargy, loss of appetite, or limping — will be excused from services until a veterinarian has confirmed the dog is cleared to return.</p>
+        <p class="contract-subhead">Board &amp; Train Clients Only</p>
+        <p class="form-check-text">The following documents must be on file no less than 48 hours before the first day of service:</p>
+        <ul class="contract-list">
+          <li>Current vaccination records or proof of titer test</li>
+          <li>A signed "clean bill of health" from your veterinarian</li>
+          <li>Current rabies and licensing tags</li>
+        </ul>
+        <p class="form-check-text" style="margin-top:0.75rem;">Please scan or photograph these documents and email them to <strong style="color:var(--white);">caylen@morethandogtraining.com</strong> with your dog's name in the subject line. More Than Dog Training will not admit any dog without all required records and signed agreements on file.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section6" value="agreed" required>
+          <span>I have read and agree to Section 6: Vaccinations, Licensing &amp; Identification</span>
+        </label>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 7</span>
+        <div class="form-check-title">Training Methods &amp; Tools</div>
+        <p class="form-check-text">More Than Dog Training uses a balanced, results-based approach to training. Depending on the dog and program, training tools may include, but are not limited to:</p>
+        <ul class="contract-list">
+          <li>Flat buckle collar</li>
+          <li>Prong collar</li>
+          <li>E-collar / remote training collar</li>
+          <li>Slip lead</li>
+          <li>Martingale collar</li>
+          <li>Dominant dog collar</li>
+          <li>Head halti</li>
+          <li>Transitional leash</li>
+          <li>Pet convincer</li>
+          <li>Muzzle</li>
+          <li>"Bonker" (rolled towel used as a sound interrupter)</li>
+        </ul>
+        <p class="form-check-text" style="margin-top:0.75rem;">I acknowledge I have had the opportunity to ask questions about any of these tools prior to signing and agree to their safe, responsible use throughout the training program.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section7" value="agreed" required>
+          <span>I have read and agree to Section 7: Training Methods &amp; Tools</span>
+        </label>
+      </div>
+
+      <!-- SECTION 8 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 8</span>
+        <div class="form-check-title">Satisfaction Guarantee</div>
+        <p class="form-check-text">More Than Dog Training is committed to doing everything within its power to help you and your dog reach your goals. Your trainer will be on time and will communicate in advance if running late.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">However, More Than Dog Training cannot guarantee specific behavioral outcomes once the dog is in my care, as the long-term success of any training program depends on my ongoing commitment. Training is a team effort between trainer, dog, and owner — and results are directly tied to consistency of practice.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section8" value="agreed" required>
+          <span>I have read and agree to Section 8: Satisfaction Guarantee</span>
+        </label>
+      </div>
+
+      <!-- SECTION 9 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 9</span>
+        <div class="form-check-title">Owner Commitment</div>
+        <p class="form-check-text">I acknowledge and agree that the success of any training program — whether private lessons, board and train, or virtual — depends on the combined effort of both myself and my dog. More Than Dog Training will provide education through in-person instruction, scheduled sessions, and ongoing updates via video, audio messages, calls, written materials, or other media as appropriate to the program.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">I understand and agree to the following:</p>
+        <ul class="contract-list">
+          <li>A dog's behavior is not static. Even well-trained behaviors require consistent practice and reinforcement. No dog is ever considered "cured," though behavior can be modified and managed, including in cases involving aggression, reactivity, fear, or anxiety.</li>
+          <li>Long-term success requires my full compliance with the trainer's instructions, protocols, and recommended tools. Training must be practiced and maintained as a daily lifestyle, not treated as a one-time fix.</li>
+          <li>I am responsible for replicating and maintaining the training environment, structure, and techniques provided by the trainer, both during and after the program. Failure to do so may result in behavioral regression. No guarantee of permanent results is made if I do not uphold these responsibilities.</li>
+          <li>All decision-making adults in the household must be willing to participate in and support the training program. Children may attend sessions if mature enough to receive and follow instructions.</li>
+          <li>I agree to be on time, have all training equipment ready, and complete any assigned homework prior to each lesson.</li>
+          <li>If my inability or unwillingness to practice becomes a recurring issue, More Than Dog Training reserves the right to discuss alternative options or terminate the agreement.</li>
+        </ul>
+        <p class="contract-subhead">Board &amp; Train Safety</p>
+        <p class="form-check-text">If a dog's behavior escalates to a level that poses a safety risk to the trainer, other dogs, or household members at any point during a board and train program, More Than Dog Training reserves the right to contact the Client and require early pickup. In such cases, a partial refund may be issued at the trainer's discretion, based on the number of days of service completed.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section9" value="agreed" required>
+          <span>I have read and agree to Section 9: Owner Commitment</span>
+        </label>
+      </div>
+
+      <!-- SECTION 10 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 10</span>
+        <div class="form-check-title">Payment Terms</div>
+        <p class="form-check-text">All services require payment in full prior to or at the start of service unless a written payment plan has been agreed upon in advance.</p>
+        <p class="contract-subhead">Accepted Payment Methods</p>
+        <ul class="contract-list">
+          <li>Venmo</li>
+          <li>Check (made payable to More Than Dog Training)</li>
+          <li>Cash</li>
+        </ul>
+        <p class="contract-subhead">Board &amp; Train Deposit</p>
+        <p class="form-check-text">A non-refundable deposit is required to reserve a board and train slot. The remaining balance is due in full on or before the first day of service. Deposit amount will be communicated at time of booking.</p>
+        <p class="contract-subhead">Payment Plans</p>
+        <p class="form-check-text">If a payment plan has been agreed upon, the terms must be documented in writing and signed by both parties prior to the start of service.</p>
+        <div class="form-row" style="margin-top:0.75rem;">
+          <div class="form-field full">
+            <label for="paymentPlan">If a payment plan applies, please state the agreed terms here:</label>
+            <textarea id="paymentPlan" name="payment_plan_terms" placeholder="Leave blank if not applicable"></textarea>
+          </div>
+        </div>
+        <p class="contract-subhead">Returned Checks &amp; Late Payments</p>
+        <p class="form-check-text">A $35 fee will be assessed for any returned or bounced check. More Than Dog Training reserves the right to suspend services for any account with an outstanding unpaid balance.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section10" value="agreed" required>
+          <span>I have read and agree to Section 10: Payment Terms</span>
+        </label>
+      </div>
+
+      <!-- SECTION 11 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 11</span>
+        <div class="form-check-title">Cancellations, No-Shows &amp; Refunds</div>
+        <p class="contract-subhead">Cancelling or Rescheduling</p>
+        <p class="form-check-text">All cancellations and reschedules must be made at least 48 hours in advance of the scheduled appointment. Each program allows a maximum of 2 reschedules, regardless of notice given. Sessions cancelled or rescheduled beyond that limit will be forfeited without refund.</p>
+        <p class="form-check-text" style="margin-top:0.5rem;">Program completion timelines:</p>
+        <ul class="contract-list">
+          <li>6-week programs must be completed within 8 weeks of the start date</li>
+          <li>8-week programs must be completed within 10 weeks of the start date</li>
+        </ul>
+        <p class="contract-subhead">No-Shows</p>
+        <p class="form-check-text">Failure to appear for a scheduled session without any prior notice constitutes a no-show. No-shows will be counted as a forfeited session and will not be rescheduled or refunded.</p>
+        <p class="contract-subhead">Termination of Service</p>
+        <p class="form-check-text">If I choose to discontinue service before completing 50% of the program (measured by number of sessions or board and train days), a partial, prorated refund will be issued. No refunds will be granted after 50% of the program has been completed.</p>
+        <p class="form-check-text" style="margin-top:0.5rem;">More Than Dog Training reserves the right to terminate services at any time if I or any household member is not in compliance with training protocols, instructions, or the terms of this agreement. In such cases, a partial refund may be issued at the trainer's discretion.</p>
+        <p class="contract-subhead">Digital Products &amp; Online Courses</p>
+        <p class="form-check-text">Due to the digital nature of online courses and electronically delivered materials, all sales are final. No refunds will be issued for any digital products once delivered.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section11" value="agreed" required>
+          <span>I have read and agree to Section 11: Cancellations, No-Shows &amp; Refunds</span>
+        </label>
+      </div>
+
+      <!-- SECTION 12 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 12</span>
+        <div class="form-check-title">Emergency Veterinary Authorization</div>
+        <p class="form-check-text" style="font-style:italic;color:var(--white-faint);">Applies to Board &amp; Train clients only.</p>
+        <p class="form-check-text" style="margin-top:0.5rem;">In the event of a veterinary emergency, More Than Dog Training will make every reasonable effort to contact me immediately. If I cannot be reached within a reasonable timeframe and emergency care is required, More Than Dog Training is authorized to seek emergency veterinary treatment on my dog's behalf.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">I agree to assume full financial responsibility for all resulting veterinary costs, including emergency care, diagnostics, and treatment. More Than Dog Training will not be held financially liable for any veterinary expenses incurred on my behalf.</p>
+        <div class="form-row" style="margin-top:1rem;">
+          <div class="form-field full">
+            <label for="vetPref">Emergency Veterinary Clinic Preference (optional)</label>
+            <input type="text" id="vetPref" name="emergency_vet_preference" placeholder="e.g. Hutto Animal Hospital">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="emergencyName">Emergency Contact Name, if different from Client (optional)</label>
+            <input type="text" id="emergencyName" name="emergency_contact_name" placeholder="Full name">
+          </div>
+          <div class="form-field">
+            <label for="emergencyPhone">Emergency Contact Phone (optional)</label>
+            <input type="tel" id="emergencyPhone" name="emergency_contact_phone" placeholder="(555) 555-5555">
+          </div>
+        </div>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section12" value="agreed" required>
+          <span>I have read and agree to Section 12: Emergency Veterinary Authorization</span>
+        </label>
+      </div>
+
+      <!-- SECTION 13 — informational only -->
+      <div class="info-only-section reveal">
+        <span class="info-only-label">Section 13 — Informational Only</span>
+        <div class="info-only-title">Communication &amp; Progress Updates</div>
+        <p class="form-check-text">More Than Dog Training is committed to keeping you informed and involved throughout your dog's training. The following communication standards apply:</p>
+        <ul class="contract-list" style="margin-top:0.5rem;">
+          <li>Board &amp; Train clients will receive regular progress updates via video, photo, or voice message throughout the program.</li>
+          <li>Private lesson clients may request session recaps or follow-up notes as needed.</li>
+          <li>All client communications will be conducted via text, email, or phone as agreed at intake.</li>
+          <li>More Than Dog Training will make reasonable efforts to respond to client inquiries within 24–48 business hours.</li>
+        </ul>
+        <p class="form-check-text" style="margin-top:0.75rem;">I agree to remain accessible and responsive throughout the duration of my program, particularly during board and train, when timely communication regarding my dog's health or behavior may be necessary.</p>
+      </div>
+
+      <!-- SECTION 14 — optional -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 14 <span class="optional-badge">Optional</span></span>
+        <div class="form-check-title">Photo &amp; Video Release</div>
+        <p class="form-check-text">More Than Dog Training regularly documents training sessions via photo and video for the purpose of:</p>
+        <ul class="contract-list">
+          <li>Providing clients with a record of their dog's progress</li>
+          <li>Educational content for online courses and training resources</li>
+          <li>Marketing and promotional materials on social media and other platforms</li>
+        </ul>
+        <p class="form-check-text" style="margin-top:0.75rem;">Any photos or videos shared with the Client for educational purposes are the private property of More Than Dog Training and are intended solely for the enrolled Client's use. Unauthorized distribution, social media posting, or sharing with third parties is strictly prohibited. Violation of this policy may result in termination of service without refund and may be subject to legal action.</p>
+        <p class="form-check-text" style="margin-top:0.75rem;">By checking below, I authorize More Than Dog Training to reproduce, distribute, publish, broadcast, and electronically store photographs and video recordings of myself and my dog, without limitation and without compensation, at the discretion of More Than Dog Training.</p>
+        <p class="form-check-text" style="margin-top:0.5rem;font-style:italic;color:var(--white-faint);">This section is optional. Declining will not affect your eligibility for services.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section14_photo_release" value="authorized">
+          <span>I authorize More Than Dog Training to use photos and videos of me and my dog as described above.</span>
+        </label>
+      </div>
+
+      <!-- SECTION 15 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 15</span>
+        <div class="form-check-title">Age of Majority &amp; Authorization</div>
+        <p class="form-check-text">By signing this agreement, I certify that I am 18 years of age or older and am legally authorized to enter into this agreement on behalf of myself and my dog. I further certify that I am the legal owner of the dog or have been granted full authority by the legal owner to enroll the dog in training services.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section15" value="agreed" required>
+          <span>I have read and agree to Section 15: Age of Majority &amp; Authorization</span>
+        </label>
+      </div>
+
+      <!-- SECTION 16 -->
+      <div class="form-check-group reveal">
+        <span class="form-check-label">Section 16</span>
+        <div class="form-check-title">Final Acknowledgment</div>
+        <p class="form-check-text">By signing below, I confirm that I have read this agreement in its entirety, that all information provided is accurate and complete, and that I fully understand and agree to all terms and conditions set forth herein.</p>
+        <label class="form-checkbox-row" style="margin-top:1rem;">
+          <input type="checkbox" name="section16" value="agreed" required>
+          <span>I confirm I have read this agreement in full and agree to all terms and conditions.</span>
+        </label>
+      </div>
+
+      <hr class="form-divider">
+
+      <!-- SIGNATURE -->
+      <div class="form-fields">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="sigFirstName">First Name *</label>
+            <input type="text" id="sigFirstName" name="signature_first_name" placeholder="Jane" required>
+          </div>
+          <div class="form-field">
+            <label for="sigLastName">Last Name *</label>
+            <input type="text" id="sigLastName" name="signature_last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="sigDate">Date *</label>
+            <input type="date" id="sigDate" name="signature_date" required>
+          </div>
+        </div>
+        <p class="form-sig-note">By typing your name above and submitting this form, you are signing this agreement electronically. This e-signature is legally binding under the laws of the State of Texas.</p>
+      </div>
+
+      <div class="form-submit-wrap">
+        <button type="submit" class="btn-submit">Submit Signed Agreement &rarr;</button>
+        <p class="sign-note" style="margin-top:1rem;">A copy will be sent to More Than Dog Training. Please screenshot or save this page for your records.</p>
+      </div>
+
+      </form>
+
     </div>
+
+    <div class="form-success" id="formSuccess" style="max-width:860px;margin:0 auto 4rem;">
+      <strong style="color:var(--white);font-size:1.1rem;">Agreement received.</strong><br>
+      Thank you for signing. Caylen will be in touch shortly.<br><br>
+      <span style="font-size:0.85rem;">More Than Dog Training &middot; morethandogtraining.com &middot; caylen@morethandogtraining.com</span>
+    </div>
+
   </section>
 
 
@@ -670,6 +922,14 @@
       });
     }
 
+    const bittenYes = document.getElementById('bittenYes');
+    const bittenNo  = document.getElementById('bittenNo');
+    const bittenDetail = document.getElementById('bittenDetail');
+    if (bittenYes && bittenDetail) {
+      bittenYes.addEventListener('change', () => bittenDetail.classList.add('visible'));
+      bittenNo.addEventListener('change',  () => bittenDetail.classList.remove('visible'));
+    }
+
     const form = document.getElementById('agreementForm');
     const success = document.getElementById('formSuccess');
     if (form) {
@@ -680,6 +940,7 @@
         if (res.ok) {
           form.style.display = 'none';
           success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth' });
         } else {
           alert('Something went wrong. Please try again or email caylen@morethandogtraining.com directly.');
         }
