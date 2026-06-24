@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png.png">
   <title>More Than Dog Training | Hutto, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -481,7 +482,6 @@
         </div>
       </div>
       <a href="follow.html">Follow Along</a>
-      <a href="freebies.html">Freebies</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -567,12 +567,12 @@
             <div class="program-name">Off Leash Obedience<br>Board &amp; Train</div>
             <div class="program-duration">4 Weeks</div>
             <p class="program-desc">
-              Your dog spends 4 weeks living in a real home environment — not a noisy kennel — on a large park property just outside Austin. They come home with reliable off-leash obedience, solid recall, and the ability to go anywhere with you.
+              Your dog spends 4 weeks living in a real home environment — not a noisy kennel — in a quiet neighborhood just outside Austin, with a fenced backyard and access to a large park. They come home with reliable obedience, solid off-leash recall, and the ability to go anywhere with you.
             </p>
             <div class="card-divider"></div>
             <ul class="features" aria-label="Program highlights">
               <li>Lives in a real home environment — not a kennel</li>
-              <li>Reliable off-leash obedience &amp; rock-solid recall</li>
+              <li>Rock-solid obedience &amp; reliable off-leash recall</li>
               <li>One-on-one attention from Caylen every single day</li>
               <li>Ready for parks, trails, restaurants, public spaces</li>
               <li>Guided transition support when they come home</li>
@@ -767,7 +767,8 @@
           </p>
         </div>
 
-        <form id="inquiry-form" novalidate aria-label="Inquiry form">
+        <form id="inquiry-form" action="https://formspree.io/f/mvzvejlr" method="POST" novalidate aria-label="Inquiry form">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
               <label for="f-name">Your Name</label>
@@ -895,11 +896,25 @@
       }
       btn.textContent = 'Sending…';
       btn.disabled = true;
-      setTimeout(() => {
-        this.reset();
-        btn.style.display = 'none';
-        success.style.display = 'flex';
-      }, 800);
+      fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      }).then(res => {
+        if (res.ok) {
+          this.reset();
+          btn.style.display = 'none';
+          success.style.display = 'flex';
+        } else {
+          btn.textContent = 'Send My Inquiry';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or email directly.');
+        }
+      }).catch(() => {
+        btn.textContent = 'Send My Inquiry';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email directly.');
+      });
     });
   </script>
 
