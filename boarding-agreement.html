@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png.png">
+  <title>Boarding Agreement | More Than Dog Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .agreement-section {
+      padding: 6rem 2rem;
+      background: var(--black-soft);
+    }
+
+    .agreement-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .agreement-intro {
+      font-size: 1rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .agreement-form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .form-check-group {
+      background: var(--black);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.5rem;
+    }
+
+    .form-check-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .form-check-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .form-check-text {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+    }
+
+    .form-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .form-checkbox-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--lavender);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .form-checkbox-row span {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: var(--black-soft);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.93rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      border-color: var(--lavender);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: var(--white-faint);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.93rem;
+      color: var(--white-dim);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .radio-group input[type="radio"] {
+      accent-color: var(--lavender);
+      cursor: pointer;
+    }
+
+    .conditional-field {
+      display: none;
+    }
+
+    .conditional-field.visible {
+      display: flex;
+    }
+
+    .contract-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contract-list li {
+      padding-left: 1.1rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.65;
+    }
+
+    .contract-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--lavender);
+    }
+
+    .contract-subhead {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 1rem 0 0.4rem;
+    }
+
+    .optional-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-faint);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.1rem 0.45rem;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0.5rem 0;
+    }
+
+    .form-sig-note {
+      font-size: 0.78rem;
+      color: var(--white-faint);
+      line-height: 1.5;
+    }
+
+    .form-submit-wrap {
+      text-align: center;
+    }
+
+    .btn-submit {
+      display: inline-block;
+      background: var(--lavender);
+      color: var(--black-soft);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--lavender-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 168, 232, 0.25);
+    }
+
+    .sign-note {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--white-faint);
+    }
+
+    .form-success {
+      display: none;
+      background: var(--black);
+      border: 1px solid var(--lavender);
+      border-radius: 3px;
+      padding: 2rem;
+      text-align: center;
+      color: var(--white-dim);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 860px;
+      margin: 0 auto 4rem;
+    }
+
+    @media (max-width: 700px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .form-field.full {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png.png" alt="More Than Dog Training logo" style="height:70px;width:auto;display:block;">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <div class="nav-dropdown">
+        <a href="past-clients.html" class="nav-dropdown-toggle">Past Clients ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="past-clients.html#boarding">Boarding</a>
+          <a href="past-clients.html#refreshers">Refreshers</a>
+        </div>
+      </div>
+      <a href="follow.html">Follow Along</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://tidycal.com/caylen/consultation" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Free Call</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── PAGE HERO ────────────────────────────────────────── -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Boarding Agreement</span>
+      <h1 class="page-headline">Boarding<br><em>Agreement</em></h1>
+      <p class="page-sub">Please read each section carefully and complete all fields before your dog's boarding stay.</p>
+    </div>
+  </div>
+
+
+  <!-- ─── AGREEMENT ────────────────────────────────────────── -->
+  <section class="agreement-section">
+    <div class="agreement-inner">
+
+      <p class="agreement-intro">
+        <strong style="color:var(--white);">More Than Dog Training</strong> &middot; Boarding Agreement<br>
+        Hutto, TX &middot; Serving the Greater Austin Area<br><br>
+        This agreement must be completed in full prior to your dog's boarding stay. By signing, you confirm that you have read, understood, and agree to all terms outlined below.
+      </p>
+
+      <form class="agreement-form" id="boardingForm" action="https://formspree.io/f/mqeveokq" method="POST">
+        <input type="hidden" name="_subject" value="New Boarding Agreement Signed">
+
+        <!-- SECTION 1 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 1</span>
+          <div class="form-check-title">Client &amp; Dog Information</div>
+          <p class="form-check-text">Please complete all fields below.</p>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="clientName">Client Full Name *</label>
+              <input type="text" id="clientName" name="client_name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone_number" placeholder="(555) 555-5555" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="emailAddr">Email Address *</label>
+              <input type="email" id="emailAddr" name="email_address" placeholder="jane@email.com" required>
+            </div>
+            <div class="form-field">
+              <label for="dogName">Dog's Name *</label>
+              <input type="text" id="dogName" name="dog_name" placeholder="Buddy" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="breed">Breed *</label>
+              <input type="text" id="breed" name="breed" placeholder="e.g. Lab Mix" required>
+            </div>
+            <div class="form-field">
+              <label for="dogAge">Age *</label>
+              <input type="text" id="dogAge" name="age" placeholder="e.g. 2 years" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Has your dog been spayed/neutered? *</label>
+              <div class="radio-group">
+                <label><input type="radio" name="spayed_neutered" value="Yes" required> Yes</label>
+                <label><input type="radio" name="spayed_neutered" value="No"> No</label>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="boardingDates">Boarding Dates *</label>
+              <input type="text" id="boardingDates" name="boarding_dates" placeholder="e.g. July 1–5" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 2</span>
+          <div class="form-check-title">Medical Information &amp; Vaccinations</div>
+          <p class="form-check-text">The following documents must be on file no less than 48 hours before the first day of boarding:</p>
+          <ul class="contract-list">
+            <li>Current vaccination records or proof of titer test</li>
+            <li>A signed "clean bill of health" from your veterinarian</li>
+            <li>Current rabies and licensing tags</li>
+          </ul>
+          <p class="form-check-text" style="margin-top:0.75rem;">Please email all records to <strong style="color:var(--white);">caylen@morethandogtraining.com</strong> with your dog's name in the subject line. More Than Dog Training will not admit any dog without all required records on file.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">Please also email any of the following prior to your dog's stay:</p>
+          <ul class="contract-list">
+            <li>Recent injuries or surgeries</li>
+            <li>Chronic illnesses or ongoing health conditions</li>
+            <li>Current medications with dosage amounts</li>
+            <li>Known allergies, whether environmental or food-related</li>
+          </ul>
+          <p class="form-check-text" style="margin-top:0.75rem;">Any dog exhibiting symptoms of illness or any contagious condition — including sneezing, coughing, vomiting, diarrhea, or lethargy — will not be admitted until cleared by a veterinarian.</p>
+          <div class="form-row">
+            <div class="form-field full">
+              <label for="dogFood">Dog's Current Food * — Include brand, serving size, and feeding schedule</label>
+              <textarea id="dogFood" name="dog_food" placeholder="e.g. Royal Canin kibble, 1 cup twice daily at 7am and 6pm" required></textarea>
+            </div>
+          </div>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section2" value="agreed" required>
+            <span>I certify that all medical, dietary, and health information provided is accurate and complete. I confirm my dog's vaccinations are current and I will provide all required documentation prior to the boarding stay.</span>
+          </label>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 3</span>
+          <div class="form-check-title">Behavioral History &amp; Bite Disclosure</div>
+          <p class="form-check-text">I warrant that, to the best of my knowledge, I have fully disclosed any and all history of aggression, reactivity, resource guarding, fear-based behavior, prior bites, or other behavioral concerns.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">Failure to disclose a known bite history or aggressive behavior prior to boarding constitutes a material misrepresentation. In such cases, More Than Dog Training shall bear no liability for any resulting incident, and all costs, damages, and legal responsibility remain solely with the Client.</p>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Has your dog ever bitten a person or another animal? *</label>
+              <div class="radio-group">
+                <label><input type="radio" name="bitten" value="Yes" id="bittenYes" required> Yes</label>
+                <label><input type="radio" name="bitten" value="No" id="bittenNo"> No</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row conditional-field" id="bittenDetail">
+            <div class="form-field full">
+              <label for="bittenDesc">Please describe: *</label>
+              <textarea id="bittenDesc" name="bitten_description" placeholder="Who was bitten, what happened, severity..."></textarea>
+            </div>
+          </div>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section3" value="agreed" required>
+            <span>I have read and agree to Section 3: Behavioral History &amp; Bite Disclosure</span>
+          </label>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 4</span>
+          <div class="form-check-title">Drop-Off &amp; Pick-Up Protocols</div>
+          <p class="form-check-text">All dogs must arrive leashed, crated, or otherwise fully secured during drop-off and pick-up handoffs. More Than Dog Training is not responsible for incidents that occur as a result of a dog being unsecured during transport or transfer.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">Drop-off and pick-up times will be confirmed at the time of booking. Please do not arrive outside of the agreed window without prior notice.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section4" value="agreed" required>
+            <span>I have read and agree to Section 4: Drop-Off &amp; Pick-Up Protocols</span>
+          </label>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 5</span>
+          <div class="form-check-title">Liability Release</div>
+          <p class="form-check-text">More Than Dog Training takes every reasonable precaution to ensure a safe environment. However, due to the inherently unpredictable nature of animal behavior, no boarding environment can be guaranteed entirely risk-free.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">By signing below, I (on behalf of myself and any individuals in my household) agree to release and hold harmless More Than Dog Training, its owner, assistants, volunteers, and any participating property owners from all liability, claims, damages, illness, injury, or death that may arise directly or indirectly — now or in the future — as a result of participation in any service provided by More Than Dog Training.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">I assume full financial and legal responsibility for any damage, injury, illness, or death caused by my dog during the course of the boarding stay.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">This agreement shall be governed by the laws of the State of Texas. Any disputes arising from this agreement shall first be addressed through good-faith negotiation. If unresolved, both parties agree to pursue binding mediation in Williamson County, Texas prior to initiating any legal action.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section5" value="agreed" required>
+            <span>I have read and agree to Section 5: Liability Release</span>
+          </label>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 6</span>
+          <div class="form-check-title">Payment &amp; Deposit</div>
+          <p class="form-check-text">A non-refundable deposit is required to reserve a boarding slot. The remaining balance is due in full on or before the first day of boarding. Deposit amount will be communicated at time of booking.</p>
+          <p class="contract-subhead">Accepted Payment Methods</p>
+          <ul class="contract-list">
+            <li>Venmo</li>
+            <li>Check (made payable to More Than Dog Training)</li>
+            <li>Cash</li>
+          </ul>
+          <p class="form-check-text" style="margin-top:0.75rem;">A $35 fee will be assessed for any returned or bounced check. More Than Dog Training reserves the right to suspend services for any account with an outstanding unpaid balance.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section6" value="agreed" required>
+            <span>I have read and agree to Section 6: Payment &amp; Deposit</span>
+          </label>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 7</span>
+          <div class="form-check-title">Cancellations &amp; Refunds</div>
+          <p class="form-check-text">All cancellations must be made at least 48 hours in advance of the scheduled drop-off date. The non-refundable deposit will be forfeited for any cancellation regardless of notice given.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">The remaining balance (beyond the deposit) will be refunded in full if cancelled with at least 48 hours' notice. Cancellations made with less than 48 hours' notice will be charged in full.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">If a dog's behavior escalates to a level that poses a safety risk to the trainer, other dogs, or household members during the boarding stay, More Than Dog Training reserves the right to contact the Client and require early pickup. In such cases, a partial refund may be issued at the trainer's discretion based on the number of days completed.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section7" value="agreed" required>
+            <span>I have read and agree to Section 7: Cancellations &amp; Refunds</span>
+          </label>
+        </div>
+
+        <!-- SECTION 8 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 8</span>
+          <div class="form-check-title">Emergency Veterinary Authorization</div>
+          <p class="form-check-text">In the event of a veterinary emergency, More Than Dog Training will make every reasonable effort to contact me immediately. If I cannot be reached within a reasonable timeframe and emergency care is required, More Than Dog Training is authorized to seek emergency veterinary treatment on my dog's behalf.</p>
+          <p class="form-check-text" style="margin-top:0.75rem;">I agree to assume full financial responsibility for all resulting veterinary costs. More Than Dog Training will not be held financially liable for any veterinary expenses incurred on my behalf.</p>
+          <div class="form-row">
+            <div class="form-field full">
+              <label for="vetClinic">Veterinary Clinic Name *</label>
+              <input type="text" id="vetClinic" name="vet_clinic" placeholder="e.g. Hutto Animal Hospital" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="vetPhone">Vet's Phone Number *</label>
+              <input type="tel" id="vetPhone" name="vet_phone" placeholder="(555) 555-5555" required>
+            </div>
+            <div class="form-field">
+              <label for="emergencyContact">Emergency Contact Name (if different from you)</label>
+              <input type="text" id="emergencyContact" name="emergency_contact_name" placeholder="Optional">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="emergencyPhone">Emergency Contact Phone</label>
+              <input type="tel" id="emergencyPhone" name="emergency_contact_phone" placeholder="Optional">
+            </div>
+          </div>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section8" value="agreed" required>
+            <span>I have read and agree to Section 8: Emergency Veterinary Authorization</span>
+          </label>
+        </div>
+
+        <!-- SECTION 9 — optional -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 9 <span class="optional-badge">Optional</span></span>
+          <div class="form-check-title">Photo &amp; Video Release</div>
+          <p class="form-check-text">More Than Dog Training may photograph and/or video record your dog during their stay for the purpose of progress updates, social media, and marketing materials. Any media shared with you is the private property of More Than Dog Training and is intended solely for your personal use.</p>
+          <p class="form-check-text" style="margin-top:0.5rem;font-style:italic;color:var(--white-faint);">This section is optional. Declining will not affect your dog's care.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section9_photo_release" value="authorized">
+            <span>I authorize More Than Dog Training to use photos and videos of my dog as described above.</span>
+          </label>
+        </div>
+
+        <!-- SECTION 10 -->
+        <div class="form-check-group">
+          <span class="form-check-label">Section 10</span>
+          <div class="form-check-title">Final Acknowledgment</div>
+          <p class="form-check-text">By signing below, I certify that I am 18 years of age or older, am the legal owner of the dog or have been granted full authority by the legal owner, and have read this agreement in its entirety. All information provided is accurate and complete, and I fully understand and agree to all terms set forth herein.</p>
+          <label class="form-checkbox-row">
+            <input type="checkbox" name="section10" value="agreed" required>
+            <span>I confirm I have read this agreement in full and agree to all terms and conditions.</span>
+          </label>
+        </div>
+
+        <hr class="form-divider">
+
+        <!-- SIGNATURE -->
+        <div class="form-fields">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="sigFirstName">First Name *</label>
+              <input type="text" id="sigFirstName" name="signature_first_name" placeholder="Jane" required>
+            </div>
+            <div class="form-field">
+              <label for="sigLastName">Last Name *</label>
+              <input type="text" id="sigLastName" name="signature_last_name" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="sigDate">Date *</label>
+              <input type="date" id="sigDate" name="signature_date" required>
+            </div>
+          </div>
+          <p class="form-sig-note">By typing your name above and submitting this form, you are signing this agreement electronically. This e-signature is legally binding under the laws of the State of Texas.</p>
+        </div>
+
+        <div class="form-submit-wrap">
+          <button type="submit" class="btn-submit">Submit Signed Agreement &rarr;</button>
+          <p class="sign-note">A copy will be sent to More Than Dog Training. Please screenshot or save this page for your records.</p>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <strong style="color:var(--white);font-size:1.1rem;">Agreement received.</strong><br>
+      Thank you for signing. Caylen will be in touch with boarding details shortly.<br><br>
+      <span style="font-size:0.85rem;">More Than Dog Training &middot; morethandogtraining.com &middot; caylen@morethandogtraining.com</span>
+    </div>
+
+  </section>
+
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">More Than Dog Training</div>
+        <div class="footer-loc">Serving Hutto, Austin, and surrounding areas</div>
+      </div>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="past-clients.html">Past Clients</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <nav class="footer-links" aria-label="Social media links">
+        <a href="https://www.instagram.com/morethandogtraining_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@morethandogtraining" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const mainNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 60 ? '0.75rem 2.5rem' : '1.1rem 2.5rem';
+    }, { passive: true });
+
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks  = document.getElementById('navLinks');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    const bittenYes = document.getElementById('bittenYes');
+    const bittenNo  = document.getElementById('bittenNo');
+    const bittenDetail = document.getElementById('bittenDetail');
+    if (bittenYes && bittenDetail) {
+      bittenYes.addEventListener('change', () => bittenDetail.classList.add('visible'));
+      bittenNo.addEventListener('change',  () => bittenDetail.classList.remove('visible'));
+    }
+
+    const form = document.getElementById('boardingForm');
+    const success = document.getElementById('formSuccess');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('Something went wrong. Please try again or email caylen@morethandogtraining.com directly.');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
