@@ -432,6 +432,50 @@
 
     .contact-skip a:hover { text-decoration: underline; }
 
+    /* ─── RIGHT PLACE ────────────────────────────────────────── */
+    #right-place {
+      background: var(--black-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rp-headline {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .rp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 820px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .rp-item {
+      background: rgba(196, 168, 232, 0.06);
+      border: 1px solid rgba(196, 168, 232, 0.18);
+      border-radius: 3px;
+      padding: 1.5rem 1.75rem;
+      color: var(--white-dim);
+      font-size: 1rem;
+      line-height: 1.65;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .rp-item::before {
+      content: '✓';
+      color: var(--lavender);
+      font-size: 1.05rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
     /* ─── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
       .hero-content {
@@ -452,6 +496,7 @@
 
       .services-grid { grid-template-columns: 1fr 1fr; }
       .about-big-num { font-size: 6rem; }
+      .rp-list { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -528,6 +573,20 @@
     <div class="hero-scroll-hint" aria-hidden="true">
       <div class="scroll-line"></div>
       <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ─── YOU'RE IN THE RIGHT PLACE ──────────────────────────── -->
+  <section id="right-place" aria-labelledby="rp-heading">
+    <div class="container">
+      <h2 id="rp-heading" class="section-headline rp-headline reveal">You're in the right place if…</h2>
+      <ul class="rp-list">
+        <li class="rp-item reveal reveal-d1">Your dog loses it the second another dog or person comes into view</li>
+        <li class="rp-item reveal reveal-d2">You dream about letting your dog off leash but don't trust them for a second</li>
+        <li class="rp-item reveal reveal-d3">You have a puppy and want to do this right from the start</li>
+        <li class="rp-item reveal reveal-d4">You've already tried another trainer and you're still struggling</li>
+      </ul>
     </div>
   </section>
 
