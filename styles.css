@@ -412,6 +412,9 @@ section { padding: 6.5rem 2rem; }
 
 /* ─── SERVICE CARDS ──────────────────────────────────────── */
 .svc-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 2rem 1.75rem;
