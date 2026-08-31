@@ -415,15 +415,18 @@ section { padding: 6.5rem 2rem; }
   display: block;
   text-decoration: none !important;
   color: inherit !important;
-  border: 1px solid var(--border);
+  background: rgba(196, 168, 232, 0.06);
+  border: 1.5px solid rgba(196, 168, 232, 0.4);
   border-radius: 3px;
   padding: 2rem 1.75rem;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .svc-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--lavender);
+  background: rgba(196, 168, 232, 0.1);
   transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(196, 168, 232, 0.12);
 }
 
 .svc-icon { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
